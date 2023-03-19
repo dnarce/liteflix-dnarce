@@ -1,13 +1,24 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { getNowPlaying } from '@/libs/movies';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
-  name: string
-}
+// type Data = {
+//   name: string;
+// };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<any>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  try {
+    const nowPlaying = await getNowPlaying();
+    console.log(nowPlaying);
+    res.status(200).json(nowPlaying);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'Ocurrió un error desconocido.' });
+    }
+  }
 }

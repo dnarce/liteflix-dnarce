@@ -43,7 +43,6 @@ export const getNowPlaying = async (): Promise<Movie> => {
     const randomMovieIndex = getRandomNumber(0, resultData.results.length - 1);
     return resultData.results[randomMovieIndex] as Movie;
   } else {
-    console.error('Error al obtener datos de la API:', resultData);
     throw new Error('Error al obtener datos de la API');
   }
 };

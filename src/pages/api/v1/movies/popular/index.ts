@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getPopularMovies } from '@/libs/movies';
+import { getPopularMovies } from '@/services/movies';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(

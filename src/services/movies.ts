@@ -1,30 +1,12 @@
-import { getRandomNumber } from './mathUtils';
-
-//TODO: modificar esta interface para que sea la de TMDB y moverla a un directorio de interfaces
-
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import { MovieTMDB } from '@/interfaces/movies';
+import { getRandomNumber } from '../libs/mathUtils';
 
 interface ApiResponse {
   results: Object[];
   errors: string[];
 }
 
-export const getNowPlaying = async (): Promise<Movie> => {
+export const getNowPlaying = async (): Promise<MovieTMDB> => {
   const fetchOptions = {
     method: 'GET',
     headers: {
@@ -41,13 +23,13 @@ export const getNowPlaying = async (): Promise<Movie> => {
   const resultData: ApiResponse = await data.json();
   if (resultData.results) {
     const randomMovieIndex = getRandomNumber(0, resultData.results.length - 1);
-    return resultData.results[randomMovieIndex] as Movie;
+    return resultData.results[randomMovieIndex] as MovieTMDB;
   } else {
     throw new Error('Error al obtener datos de la API');
   }
 };
 
-export const getPopularMovies = async (): Promise<Movie[]> => {
+export const getPopularMovies = async (): Promise<MovieTMDB[]> => {
   const fetchOptions = {
     method: 'GET',
     headers: {
@@ -63,7 +45,7 @@ export const getPopularMovies = async (): Promise<Movie[]> => {
 
   const resultData: ApiResponse = await data.json();
   if (resultData.results) {
-    return resultData.results as Movie[];
+    return resultData.results as MovieTMDB[];
   } else {
     throw new Error('Error al obtener datos de la API');
   }

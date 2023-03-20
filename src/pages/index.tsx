@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -15,8 +14,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default function Home(props: GetStaticProps) {
-  const [data, setData] = useState<any | null>(null);
-
   return (
     <>
       <nav>

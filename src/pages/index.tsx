@@ -1,4 +1,22 @@
-export default function Home() {
+import { useEffect, useState } from 'react';
+import { GetStaticProps } from 'next';
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const response = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
+  const resultData: any = await response.json();
+
+  console.log(resultData);
+  return {
+    props: {
+      name: 'diego',
+    },
+  };
+};
+
+export default function Home(props: GetStaticProps) {
+  const [data, setData] = useState<any | null>(null);
+
   return (
     <>
       <nav>

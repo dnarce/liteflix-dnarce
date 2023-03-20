@@ -1,5 +1,7 @@
 import { getRandomNumber } from './mathUtils';
 
+//TODO: modificar esta interface para que sea la de TMDB y moverla a un directorio de interfaces
+
 interface Movie {
   adult: boolean;
   backdrop_path: string;

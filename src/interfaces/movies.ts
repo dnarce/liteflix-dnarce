@@ -14,3 +14,20 @@ export interface MovieTMDB {
   vote_average: number;
   vote_count: number;
 }
+
+export interface LiteFlixMovie {
+  adult: boolean;
+  backdropPath: string;
+  genreIds: number[];
+  id: number;
+  originalLanguage: string;
+  originalTitle: string;
+  overview: string;
+  popularity: number;
+  posterPath: string;
+  releaseDate: string;
+  title: string;
+  video: boolean;
+  voteAverage: number;
+  voteCount: number;
+}

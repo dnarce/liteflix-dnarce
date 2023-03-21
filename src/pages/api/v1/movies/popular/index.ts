@@ -8,7 +8,7 @@ export default async function handler(
 ) {
   try {
     //TODO: agregar variables para controlar la cantidad de resultados
-    const popularMovies = await (await getPopularMovies()).slice(0, 4);
+    const popularMovies = (await getPopularMovies()).slice(0, 4);
     res.status(200).json(popularMovies);
   } catch (error) {
     if (error instanceof Error) {

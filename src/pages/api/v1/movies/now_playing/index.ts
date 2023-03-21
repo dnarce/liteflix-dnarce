@@ -5,6 +5,7 @@ import { getNowPlaying } from '@/services/movies';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 //TODO: Mover este parser
+//TODO: Agregar los diferentes tipos de REST call [get, post, put]
 const parseMovie = (movie: MovieTMDB): LiteFlixMovie => ({
   adult: movie.adult,
   backdropPath: movie.backdrop_path,

@@ -1,3 +1,5 @@
+import { Hero } from '@/components/hero';
+import { Navbar } from '@/components/navbar';
 import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -8,50 +10,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
   console.log(resultData);
   return {
     props: {
-      name: 'diego',
+      nowPlaying: resultData,
     },
   };
 };
 
 export default function Home(props: GetStaticProps) {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>LITEFLIX</li>
-          <li>Hamburguer button</li>
-          <li>User Avatar</li>
-        </ul>
-        <div>
-          <ul>
-            <li>Inicio</li>
-            <li>Series</li>
-            <li>Películas</li>
-            <li>Agregadas Recientemente</li>
-            <li>Populares</li>
-            <li>Mis Películas</li>
-            <li>Mi Lista</li>
-            <li>
-              <button>+ Agregar Pelícla</button>
-            </li>
-            <li>
-              <button>Cerrar sesión</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <section>
+    <div className={`bg-orange-400 relative`}>
+      <Navbar />
+      <Hero />
+      {/* <section className='bg-blue-800 min-h-screen'>
         <h2>Original de LITEFLIX</h2>
-        <h1>La casa de Papel</h1>
+        <h1>La casa de papel</h1>
         <button>Reproducir</button>
         <button>+ Mi Lista</button>
-      </section>
+      </section> */}
       <section>
         <h1>
           Ver: <button>Poulares</button>
           <div>Movie card list container</div>
         </h1>
       </section>
-    </>
+    </div>
   );
 }

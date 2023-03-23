@@ -17,10 +17,11 @@ export function Button({ icon, isPrimary, children, className }: ButtonProps) {
     }
   );
   return (
+    //TODO: Fixear el centrado del texto con el svg 😭
     <button className={buttonClass}>
-      <div className='flex flex-row items-center justify-center align-middle'>
-        {icon && <span className='pr-2 flex items-center'>{icon}</span>}
-        {children}
+      <div className='inline-flex items-center justify-center align-middle'>
+        {icon}
+        <span className='ml-2 py-0'>{children}</span>
       </div>
     </button>
   );

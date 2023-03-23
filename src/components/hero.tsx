@@ -48,7 +48,7 @@ export function Hero({ movie }: HeroProps) {
         backgroundImage: `url('https://image.tmdb.org/t/p/original${backdropPath}')`,
       }}
     >
-      <div className='text-center text-white'>
+      <div className='text-center text-white' style={{ lineHeight: 1 }}>
         {isLiteFlixOriginal && (
           <h2 className='text-[20px] uppercase font-light'>
             Original de <span className='font-bold'>LITEFLIX</span>

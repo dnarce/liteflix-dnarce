@@ -1,6 +1,7 @@
-import { Hero } from '@/components/hero';
-import { Navbar } from '@/components/navbar';
+import { Hero } from '@/components/Hero';
+import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
+import { LiteFlixMovie } from '@/interfaces/movies';
 
 import localFont from 'next/font/local';
 
@@ -21,11 +22,15 @@ const bebasNeue = localFont({
   ],
   variable: '--font-bebasNeue',
 });
+//TODO: Mover a interfaces
+interface HomeProps {
+  nowPlaying: LiteFlixMovie;
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const response = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
-  const resultData: any = await response.json();
+  const resultData: LiteFlixMovie = await response.json();
 
   console.log(resultData);
   return {
@@ -35,11 +40,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default function Home(props: GetStaticProps) {
+export default function Home(props: HomeProps) {
   return (
-    <div className={`bg-orange-400 relative ${bebasNeue.className}`}>
+    <div className={`relative ${bebasNeue.className} tracking-widest`}>
       <Navbar />
-      <Hero />
+      <Hero movie={props.nowPlaying as LiteFlixMovie} />
       <section>
         <h1>
           Ver: <button>Poulares</button>

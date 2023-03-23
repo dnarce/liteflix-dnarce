@@ -19,7 +19,10 @@ const Hamburger = () => {
 
 const LiteflixLogo = () => {
   return (
-    <div className='uppercase text-2xl' style={{ color: '#64EEBC' }}>
+    <div
+      className='uppercase text-[28px] font-bold'
+      style={{ color: '#64EEBC' }}
+    >
       <span className='font-bold'>Lite</span>
       <span className='font-extralight'>flix</span>
     </div>

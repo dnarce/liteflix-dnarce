@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
 import localFont from 'next/font/local';
+import { MoviesGrid } from '@/components/MoviesGrid';
 
 const bebasNeue = localFont({
   src: [
@@ -25,32 +26,42 @@ const bebasNeue = localFont({
 //TODO: Mover a interfaces
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
+  popularMovies: LiteFlixMovie[];
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const response = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
-  const resultData: LiteFlixMovie = await response.json();
+  const nowPlayingResponse = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
+  const nowPlayingResultData: LiteFlixMovie = await nowPlayingResponse.json();
 
-  console.log(resultData);
+  const popularMoviesResponse = await fetch(`${apiUrl}/api/v1/movies/popular`);
+  const popularMoviesResultData: LiteFlixMovie =
+    await popularMoviesResponse.json();
+
+  //TODO: borrar esto
+  console.log('nowPlayingResponse: 👇');
+  console.log(nowPlayingResponse);
+  console.log('popularMoviesResultData 👇');
+  console.log(popularMoviesResultData);
   return {
     props: {
-      nowPlaying: resultData,
+      nowPlaying: nowPlayingResultData,
+      popularMovies: popularMoviesResultData,
     },
   };
 };
 
 export default function Home(props: HomeProps) {
   return (
-    <div className={`relative ${bebasNeue.className} tracking-widest`}>
+    <div
+      className={`relative ${bebasNeue.className} tracking-widest bg-[#242424] text-white`}
+    >
       <Navbar />
       <Hero movie={props.nowPlaying as LiteFlixMovie} />
-      <section>
-        <h1>
-          Ver: <button>Poulares</button>
-          <div>Movie card list container</div>
-        </h1>
-      </section>
+      <div>
+        Ver: <button>Poulares</button>
+      </div>
+      <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
     </div>
   );
 }

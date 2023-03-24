@@ -58,10 +58,15 @@ export default function Home(props: HomeProps) {
     >
       <Navbar />
       <Hero movie={props.nowPlaying as LiteFlixMovie} />
-      <div>
-        Ver: <button>Poulares</button>
-      </div>
-      <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
+      <section
+        id='movies-selection'
+        className='lg:absolute lg:top-32 lg:right-24'
+      >
+        <div className='text-center mb-8'>
+          Ver: <button>Poulares</button>
+        </div>
+        <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
+      </section>
     </div>
   );
 }

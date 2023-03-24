@@ -35,7 +35,7 @@ interface MoviesCard {
 function MovieCard({ originalTitle, backdropPath }: MoviesCard) {
   return (
     <div
-      className='relative flex items-center justify-center w-[350px] h-[194px] bg-no-repeat bg-cover mb-4 rounded'
+      className='relative flex items-center justify-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-no-repeat bg-cover mb-4 rounded'
       style={{
         backgroundImage: `url('https://image.tmdb.org/t/p/w500${backdropPath}')`,
       }}
@@ -44,7 +44,7 @@ function MovieCard({ originalTitle, backdropPath }: MoviesCard) {
       <div className='absolute flex flex-col items-center justify-center inset-0'>
         <PlayMovieIcon />
       </div>
-      <h1 className='absolute bottom-3.5 text-center w-full'>
+      <h1 className='absolute bottom-3.5 text-center w-full text-ellipsis overflow-hidden whitespace-nowrap px-2'>
         {originalTitle}
       </h1>
     </div>

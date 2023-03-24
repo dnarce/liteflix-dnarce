@@ -43,23 +43,27 @@ export function Hero({ movie }: HeroProps) {
   const { originalTitle, backdropPath, isLiteFlixOriginal = true } = movie;
   return (
     <section
-      className='relative flex items-end pb-4 justify-center min-h-screen bg-no-repeat bg-center bg-cover'
+      className='relative flex items-end md:items-center justify-center md:justify-start min-h-screen bg-no-repeat bg-center bg-cover pb-4 md:pb-0'
       style={{
         backgroundImage: `url('https://image.tmdb.org/t/p/original${backdropPath}')`,
       }}
     >
       <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#242424] to-transparent'></div>
-      <div className='text-center text-white z-10' style={{ lineHeight: 1 }}>
+      <div className='text-center md:text-left md:pl-24 text-white z-10 md:absolute md:bottom-0 md:mb-40'>
         {isLiteFlixOriginal && (
-          <h2 className='text-[20px] uppercase font-light'>
+          <h2 className='text-[20px] uppercase font-light tracking-widest md:self-start'>
             Original de <span className='font-bold'>LITEFLIX</span>
           </h2>
         )}
 
-        <h1 className='text-[76px] text-[#64EEBC] font-bold uppercase tracking-widest'>
+        <h1 className='text-[76px] text-[#64EEBC] font-bold uppercase tracking-widest leading-none'>
           {originalTitle}
         </h1>
-        <Button className='mx-6 my-4' icon={<PlayIcon />} isPrimary={true}>
+        <Button
+          className='mx-6 md:mx-0 md:mr-6 my-4'
+          icon={<PlayIcon />}
+          isPrimary={true}
+        >
           Reproducir
         </Button>
         <Button icon={<PlusIcon />}>Mi Lista</Button>

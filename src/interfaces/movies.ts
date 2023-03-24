@@ -30,5 +30,5 @@ export interface LiteFlixMovie {
   video: boolean;
   voteAverage: number;
   voteCount: number;
-  isLiteFlixOriginal: boolean;
+  isLiteFlixOriginal?: boolean;
 }

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Button, BUTTON_LINK } from './Button';
 //TODO: mover componentes, iconos avatar a sus respectivos directorios
 import Avatar from '../../public/images/avatar.jpeg';
-import { MenuIcon, PlusIcon } from './icons';
+import { MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
 import { LiteflixLogo } from './LiteflixLogo';
 
 export function Navbar() {
@@ -10,14 +10,14 @@ export function Navbar() {
     <nav className='fixed top-0 left-0 w-full z-10'>
       <div className='container mx-auto px-4'>
         <div className='flex items-center justify-between py-4'>
-          <div>
+          <div className='lg:hidden'>
             <MenuIcon />
           </div>
 
           <div className='flex'>
             <LiteflixLogo />
             <Button
-              className='invisible lg:visible'
+              className='hidden lg:flex lg:items-center ml-4'
               icon={<PlusIcon />}
               buttonType={BUTTON_LINK}
             >
@@ -25,14 +25,26 @@ export function Navbar() {
             </Button>
           </div>
 
-          <div className='cursor-pointer'>
-            <Image
-              src={Avatar}
-              className='object-cover rounded-full'
-              alt='avatar image'
-              width={42}
-              height={42}
-            />
+          <div className='flex'>
+            <Button
+              className='hidden lg:flex lg:items-center mr-10'
+              icon={<MenuIcon />}
+              buttonType={BUTTON_LINK}
+            ></Button>
+            <Button
+              className='hidden lg:flex lg:items-center mr-10'
+              icon={<NotificationActiveIcon />}
+              buttonType={BUTTON_LINK}
+            ></Button>
+            <div className='cursor-pointer'>
+              <Image
+                src={Avatar}
+                className='object-cover rounded-full'
+                alt='avatar image'
+                width={42}
+                height={42}
+              />
+            </div>
           </div>
         </div>
       </div>

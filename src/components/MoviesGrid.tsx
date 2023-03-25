@@ -1,31 +1,5 @@
 import { LiteFlixMovie } from '@/interfaces/movies';
-
-const PlayMovieIcon = () => {
-  return (
-    <svg
-      width='48'
-      height='48'
-      viewBox='0 0 48 48'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <circle
-        cx='24'
-        cy='24'
-        r='23.5'
-        fill='#242424'
-        fillOpacity='0.5'
-        stroke='white'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M31.9783 24.324L19.2002 15.6V32.4L31.9783 24.324Z'
-        stroke='white'
-      />
-    </svg>
-  );
-};
+import { PlayCircleIcon } from './icons';
 
 interface MoviesCard {
   originalTitle: string;
@@ -42,7 +16,7 @@ function MovieCard({ originalTitle, backdropPath }: MoviesCard) {
     >
       <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/60 via-black/30 to-opacity-0'></div>
       <div className='absolute flex flex-col items-center justify-center inset-0'>
-        <PlayMovieIcon />
+        <PlayCircleIcon />
       </div>
       <h1 className='absolute bottom-3.5 text-center w-full text-ellipsis overflow-hidden whitespace-nowrap px-2'>
         {originalTitle}

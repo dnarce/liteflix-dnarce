@@ -1,29 +1,6 @@
 import classNames from 'classnames';
 import { useState } from 'react';
-
-const ArrowDownIcon = () => (
-  <svg
-    width='13'
-    height='8'
-    viewBox='0 0 13 8'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path d='M1 1L6.54557 6.54557L12.0911 1' stroke='white' strokeWidth='2' />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg
-    width='14'
-    height='11'
-    viewBox='0 0 14 11'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path d='M1 5L5 9L13 1' stroke='white' strokeWidth='2' />
-  </svg>
-);
+import { ArrowDownIcon, CheckIcon } from './icons';
 
 interface DropdownProps {
   items: string[];

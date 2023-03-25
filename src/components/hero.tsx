@@ -17,7 +17,7 @@ export function Hero({ movie }: HeroProps) {
       }}
     >
       <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#242424] to-transparent lg:invisible'></div>
-      <div className='text-center md:text-left md:pl-24 text-white z-10 md:absolute md:bottom-0 md:mb-40'>
+      <div className='text-center md:text-left md:pl-24 text-white z-10 md:absolute md:bottom-0 md:mb-40 lg:max-w-2/3-screen'>
         {isLiteFlixOriginal && (
           <h2 className='text-[20px] uppercase font-light tracking-widest md:self-start'>
             Original de <span className='font-bold'>LITEFLIX</span>

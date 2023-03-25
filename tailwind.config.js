@@ -16,6 +16,12 @@ module.exports = {
         '2/3-screen': '66vh',
         '3/4-screen': '75vh',
       },
+      maxWidth: {
+        '1/2-screen': '50vw',
+        '1/3-screen': '60vw',
+        '2/3-screen': '66vw',
+        '3/4-screen': '75vw',
+      },
     },
   },
   plugins: [],

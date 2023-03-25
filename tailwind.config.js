@@ -9,7 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        '1/2-screen': '50vh',
+        '1/3-screen': '60vh',
+        '2/3-screen': '66vh',
+        '3/4-screen': '75vh',
+      },
+    },
   },
   plugins: [],
 };

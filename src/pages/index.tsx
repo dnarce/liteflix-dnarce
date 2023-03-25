@@ -5,6 +5,7 @@ import { LiteFlixMovie } from '@/interfaces/movies';
 
 import localFont from 'next/font/local';
 import { MoviesGrid } from '@/components/MoviesGrid';
+import { Dropdown } from '@/components/Dropdown';
 
 const bebasNeue = localFont({
   src: [
@@ -63,7 +64,8 @@ export default function Home(props: HomeProps) {
         className='lg:absolute lg:top-32 lg:right-24'
       >
         <div className='text-center mb-8'>
-          Ver: <button>Poulares</button>
+          <label>Ver:</label>{' '}
+          <Dropdown items={['Populares', 'Mis Películas']} />
         </div>
         <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
       </section>

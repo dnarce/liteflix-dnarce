@@ -14,12 +14,12 @@ const PlayMovieIcon = () => {
         cy='24'
         r='23.5'
         fill='#242424'
-        fill-opacity='0.5'
+        fillOpacity='0.5'
         stroke='white'
       />
       <path
-        fill-rule='evenodd'
-        clip-rule='evenodd'
+        fillRule='evenodd'
+        clipRule='evenodd'
         d='M31.9783 24.324L19.2002 15.6V32.4L31.9783 24.324Z'
         stroke='white'
       />

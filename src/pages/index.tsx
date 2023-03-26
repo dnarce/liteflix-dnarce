@@ -10,6 +10,7 @@ import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { FileDropZone } from '@/components/FileDropZone';
 import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from '@/components/Button';
+import { UploadMovieForm } from '@/components/UploadMovieForm';
 
 const bebasNeue = localFont({
   src: [
@@ -58,9 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export default function Home(props: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
-  const handleFileDrop = (file: File) => {
-    console.log('Archivo seleccionado: ', file);
-  };
+
   return (
     <div
       className={`relative ${bebasNeue.className} tracking-widest bg-dark-grey text-white`}
@@ -78,27 +77,7 @@ export default function Home(props: HomeProps) {
         <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
       </section>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        <h1 className='text-center text-primary md:text-xl text-[22px]'>
-          Agregar Película
-        </h1>
-        <FileDropZone onFileDrop={handleFileDrop} />
-        <div className='flex justify-center mt-4 mb-4'>
-          <input
-            type='text'
-            name='movieTitle'
-            id='movieTitle'
-            className='w-full max-w-[248px] text-center py-2 border-b-[1px] border-white bg-transparent text-white placeholder-white focus:placeholder-transparent text-base tracking-[4px] focus:outline-none'
-            placeholder='Título'
-          />
-        </div>
-        <div className='flex justify-center mt-12'>
-          <Button buttonType={BUTTON_PRIMARY}>Subir Película</Button>
-        </div>
-        <div className='flex justify-center mt-6 md:hidden'>
-          <Button buttonType={BUTTON_SECONDARY} onClick={toggleModal}>
-            Salir
-          </Button>
-        </div>
+        <UploadMovieForm />
       </Modal>
     </div>
   );

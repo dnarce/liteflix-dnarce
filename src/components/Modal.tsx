@@ -19,7 +19,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
   );
 
   const contentClasses = classNames(
-    'w-full h-full md:h-1/2 md:max-w-[730px] px-4 md:px-16 py-4 md:py-6 bg-dark-grey transition-all duration-300 transition-transform transform origin-bottom',
+    'w-full h-full md:max-h-[440px] md:max-w-[730px] px-4 md:px-16 py-4 md:py-6 bg-dark-grey transition-all duration-300 transition-transform transform origin-bottom',
     {
       'translate-y-full': !isOpen,
       'translate-y-0': isOpen,

@@ -31,7 +31,7 @@ export function FileDropZone({ onFileDrop }: FileDropZoneProps) {
       ref={dropzoneRef}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
-      className='border-2 border-dashed border-white w-full h-32 flex flex-col items-center justify-center mt-12'
+      className='border-2 border-dashed border-white w-full h-24 flex flex-col items-center justify-center mt-12'
     >
       <p className='mb-2 flex items-center'>
         <span className='mr-2'>

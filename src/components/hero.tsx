@@ -19,12 +19,12 @@ export function Hero({ movie }: HeroProps) {
       <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-dark-grey to-transparent lg:invisible'></div>
       <div className='text-center md:text-left md:pl-24 text-white z-10 md:absolute md:bottom-0 md:mb-40 lg:max-w-2/3-screen'>
         {isLiteFlixOriginal && (
-          <h2 className='text-[20px] uppercase font-light tracking-widest md:self-start'>
+          <h2 className='text-[20px] uppercase font-light tracking-[4px] md:self-start'>
             Original de <span className='font-bold'>LITEFLIX</span>
           </h2>
         )}
 
-        <h1 className='text-[76px] text-primary font-bold uppercase tracking-widest leading-none'>
+        <h1 className='text-[76px] text-primary font-bold uppercase tracking-[12px] md:tracking-[16px] leading-none'>
           {originalTitle}
         </h1>
         <Button

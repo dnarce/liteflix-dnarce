@@ -9,6 +9,7 @@ import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { FileDropZone } from '@/components/FileDropZone';
+import { Button, BUTTON_PRIMARY } from '@/components/Button';
 
 const bebasNeue = localFont({
   src: [
@@ -79,6 +80,24 @@ export default function Home(props: HomeProps) {
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <h1 className='text-center text-primary text-base'>This is a modal</h1>
         <FileDropZone onFileDrop={handleFileDrop} />
+        <div className='flex justify-center mt-4 mb-4'>
+          {/* <label
+            htmlFor='movieTitle'
+            className='absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+          >
+            Título
+          </label> */}
+          <input
+            type='text'
+            name='movieTitle'
+            id='movieTitle'
+            className='w-full max-w-[248px] text-center py-2 border-b-[1px] border-white bg-transparent text-white placeholder-white focus:placeholder-transparent text-base tracking-[4px] focus:outline-none'
+            placeholder='Título'
+          />
+        </div>
+        <div className='flex justify-center mt-12'>
+          <Button buttonType={BUTTON_PRIMARY}>Subir Película</Button>
+        </div>
       </Modal>
     </div>
   );

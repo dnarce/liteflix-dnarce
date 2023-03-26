@@ -10,6 +10,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'dark-grey': '#242424',
+      },
+      fontSize: {
+        drawer: ['22px', '1'],
+      },
       maxHeight: {
         '1/2-screen': '50vh',
         '1/3-screen': '60vh',

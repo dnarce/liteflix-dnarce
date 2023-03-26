@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         'dark-grey': '#242424',
+        primary: '#64EEBC',
       },
       fontSize: {
         drawer: ['22px', '1'],

@@ -16,7 +16,7 @@ export function Hero({ movie }: HeroProps) {
         backgroundImage: `url('https://image.tmdb.org/t/p/original${backdropPath}')`,
       }}
     >
-      <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-[#242424] to-transparent lg:invisible'></div>
+      <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-dark-grey to-transparent lg:invisible'></div>
       <div className='text-center md:text-left md:pl-24 text-white z-10 md:absolute md:bottom-0 md:mb-40 lg:max-w-2/3-screen'>
         {isLiteFlixOriginal && (
           <h2 className='text-[20px] uppercase font-light tracking-widest md:self-start'>
@@ -24,7 +24,7 @@ export function Hero({ movie }: HeroProps) {
           </h2>
         )}
 
-        <h1 className='text-[76px] text-[#64EEBC] font-bold uppercase tracking-widest leading-none'>
+        <h1 className='text-[76px] text-primary font-bold uppercase tracking-widest leading-none'>
           {originalTitle}
         </h1>
         <Button

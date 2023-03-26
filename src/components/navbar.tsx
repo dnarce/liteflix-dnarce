@@ -6,9 +6,12 @@ import { MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
 import { LiteflixLogo } from './LiteflixLogo';
 import { Drawer } from './Drawer';
 import { useToggleDrawer } from '@/hooks/useToggleDrawer';
+import { MouseEventHandler } from 'react';
+import { useModalContext } from '@/context/modal-context';
 
 export function Navbar() {
   const { isDrawerOpen, toggleDrawer } = useToggleDrawer();
+  const { toggleModal } = useModalContext();
 
   return (
     <>
@@ -30,6 +33,7 @@ export function Navbar() {
                 className='hidden lg:flex lg:items-center ml-4'
                 icon={<PlusIcon />}
                 buttonType={BUTTON_LINK}
+                onClick={toggleModal}
               >
                 Agregar Pelicula
               </Button>

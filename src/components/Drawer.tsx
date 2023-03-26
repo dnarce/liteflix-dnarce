@@ -1,7 +1,9 @@
+import { useModalContext } from '@/context/modal-context';
 import { useToggleDrawer } from '@/hooks/useToggleDrawer';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MouseEventHandler } from 'react';
 
 import Avatar from '../../public/images/avatar.jpeg';
 import { Button, BUTTON_LINK } from './Button';
@@ -13,10 +15,12 @@ interface DrawerProps {
 }
 
 export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
+  const { toggleModal } = useModalContext();
   const linkHandler = (e: any) => {
     e.preventDefault();
     toggleDrawer();
   };
+
   const drawerClasses = classNames(
     'bg-dark-grey px-16 py-5 drawer-transition fixed inset-y-0 transform z-20 w-full lg:w-1/3',
     'transition-all duration-500 transform',
@@ -95,6 +99,7 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
               className='mr-11 font-bold'
               icon={<PlusIcon />}
               buttonType={BUTTON_LINK}
+              onClick={toggleModal}
             >
               Agregar Pelícla
             </Button>

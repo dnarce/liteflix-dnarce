@@ -6,6 +6,8 @@ import { LiteFlixMovie } from '@/interfaces/movies';
 import localFont from 'next/font/local';
 import { MoviesGrid } from '@/components/MoviesGrid';
 import { Dropdown } from '@/components/Dropdown';
+import { Modal } from '@/components/Modal';
+import { useModalContext } from '@/context/modal-context';
 
 const bebasNeue = localFont({
   src: [
@@ -53,9 +55,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default function Home(props: HomeProps) {
+  const { isModalOpen, toggleModal } = useModalContext();
   return (
     <div
-      className={`relative ${bebasNeue.className} tracking-widest bg-[#242424] text-white`}
+      className={`relative ${bebasNeue.className} tracking-widest bg-dark-grey text-white`}
     >
       <Navbar />
       <Hero movie={props.nowPlaying as LiteFlixMovie} />
@@ -69,6 +72,9 @@ export default function Home(props: HomeProps) {
         </div>
         <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
       </section>
+      <Modal isOpen={isModalOpen} onClose={toggleModal}>
+        <h1>This is a modal</h1>
+      </Modal>
     </div>
   );
 }

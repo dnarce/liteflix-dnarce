@@ -16,8 +16,8 @@ interface DrawerProps {
 
 export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
   const { toggleModal } = useModalContext();
-  const linkHandler = (e: any) => {
-    e.preventDefault();
+  const linkHandler = (event: any) => {
+    event.preventDefault();
     toggleDrawer();
   };
 

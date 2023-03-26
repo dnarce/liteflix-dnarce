@@ -8,6 +8,7 @@ import { MoviesGrid } from '@/components/MoviesGrid';
 import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
+import { FileDropZone } from '@/components/FileDropZone';
 
 const bebasNeue = localFont({
   src: [
@@ -56,6 +57,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export default function Home(props: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
+  const handleFileDrop = (file: File) => {
+    console.log('Archivo seleccionado: ', file);
+  };
   return (
     <div
       className={`relative ${bebasNeue.className} tracking-widest bg-dark-grey text-white`}
@@ -73,7 +77,8 @@ export default function Home(props: HomeProps) {
         <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
       </section>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        <h1>This is a modal</h1>
+        <h1 className='text-center text-primary text-base'>This is a modal</h1>
+        <FileDropZone onFileDrop={handleFileDrop} />
       </Modal>
     </div>
   );

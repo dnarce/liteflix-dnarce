@@ -11,7 +11,7 @@ interface ModalProps {
 
 export function Modal({ isOpen, onClose, children }: ModalProps) {
   const modalClasses = classNames(
-    'fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50 transition-opacity z-50',
+    'fixed inset-0 flex items-center justify-center md:p-4 bg-black bg-opacity-50 transition-opacity z-50',
     {
       'opacity-0 pointer-events-none': !isOpen,
       'opacity-100': isOpen,
@@ -19,7 +19,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
   );
 
   const contentClasses = classNames(
-    'w-full h-1/2 max-w-2xl p-6 bg-dark-grey rounded-t-lg transition-all duration-300 transition-transform transform origin-bottom',
+    'w-full h-full md:h-1/2 md:max-w-[730px] px-4 md:px-16 py-4 md:py-6 bg-dark-grey transition-all duration-300 transition-transform transform origin-bottom',
     {
       'translate-y-full': !isOpen,
       'translate-y-0': isOpen,

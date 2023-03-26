@@ -1,5 +1,6 @@
 export { default as ArrowDownIcon } from './ArrowDownIcon';
 export { default as CheckIcon } from './CheckIcon';
+export { default as ClipIcon } from './ClipIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as MenuIcon } from './MenuIcon';
 export { default as NotificationActiveIcon } from './NotificationActiveIcon';

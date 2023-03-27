@@ -2,16 +2,28 @@ import { useModalContext } from '@/context/modal-context';
 import { useState } from 'react';
 import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from './Button';
 import { FileDropZone } from './FileDropZone';
+
 import { UploadMovieProgressIndicator } from './UploadMovieProgressIndicator';
 
-export function UploadMovieForm() {
-  const { toggleModal } = useModalContext();
+interface UploadMovieFormProps {
+  onMovieSaved: (title: string) => void;
+}
 
+export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
+  const { toggleModal } = useModalContext();
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [progress, setProgress] = useState(50);
+  const [progress, setProgress] = useState(0);
   const [file, setFile] = useState<File | null>(null);
   const [movieTitle, setMovieTitle] = useState('');
+
+  const resetForm = () => {
+    setIsLoading(false);
+    setIsCompleted(false);
+    setProgress(0);
+    setFile(null);
+    setMovieTitle('');
+  };
 
   const handleFileDrop = (file: File) => {
     setIsLoading(true);
@@ -44,6 +56,8 @@ export function UploadMovieForm() {
       const updatedMovies = [...existingMovies, newMovie];
 
       localStorage.setItem('uploadedMovies', JSON.stringify(updatedMovies));
+      onMovieSaved(movieTitle);
+      resetForm();
     }
   };
 

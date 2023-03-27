@@ -8,9 +8,8 @@ import { MoviesGrid } from '@/components/MoviesGrid';
 import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
-import { FileDropZone } from '@/components/FileDropZone';
-import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from '@/components/Button';
-import { UploadMovieForm } from '@/components/UploadMovieForm';
+
+import { MovieUploader } from '@/components/MovieUploader';
 
 const bebasNeue = localFont({
   src: [
@@ -77,7 +76,7 @@ export default function Home(props: HomeProps) {
         <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
       </section>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        <UploadMovieForm />
+        <MovieUploader />
       </Modal>
     </div>
   );

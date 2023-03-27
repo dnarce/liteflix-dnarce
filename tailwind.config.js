@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         'dark-grey': '#242424',
         primary: '#64EEBC',
+        error: '#FF0000',
       },
       fontSize: {
         drawer: ['22px', '1'],

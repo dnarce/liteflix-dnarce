@@ -1,19 +1,13 @@
 import { useModalContext } from '@/context/modal-context';
 import { useState } from 'react';
-import {
-  Button,
-  BUTTON_LINK,
-  BUTTON_PRIMARY,
-  BUTTON_SECONDARY,
-} from './Button';
+import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from './Button';
 import { FileDropZone } from './FileDropZone';
-import { ProgressBar } from './ProgressBar';
+import { UploadMovieProgressIndicator } from './UploadMovieProgressIndicator';
 
 export function UploadMovieForm() {
   const { toggleModal } = useModalContext();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [progressColor, setProgressColor] = useState('bg-primary');
   const [isCompleted, setIsCompleted] = useState(false);
   const [progress, setProgress] = useState(50);
   const [file, setFile] = useState<File | null>(null);
@@ -60,24 +54,12 @@ export function UploadMovieForm() {
       </h1>
       {!isLoading && <FileDropZone onFileDrop={handleFileDrop} />}
       <div className='w-full mt-[60px]'>
-        {isLoading && (
-          <>
-            <span className='block text-[14px] tracking-[4px] md:text-[14px] mb-4 font-bold leading-4 md:leading-[14px]'>
-              {`Cargando ${progress}%`}
-            </span>
-            <ProgressBar progress={progress} color={progressColor} />
-            {!isCompleted && (
-              <div className='flex w-full justify-end mt-4'>
-                <Button buttonType={BUTTON_LINK}>Cancelar</Button>
-              </div>
-            )}
-          </>
-        )}
-        {isCompleted && (
-          <div className='flex w-full justify-end mt-4 font-base text-primary font-bold tracking-[4px] leading-4'>
-            ¡Listo!
-          </div>
-        )}
+        <UploadMovieProgressIndicator
+          isCompleted={isCompleted}
+          isLoading={isLoading}
+          progress={progress}
+          progressColor={'bg-primary'}
+        />
       </div>
       <div className='flex justify-center mt-4 mb-4'>
         <input

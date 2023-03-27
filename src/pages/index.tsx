@@ -1,4 +1,3 @@
-import { Hero } from '@/components/Hero';
 import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
@@ -10,6 +9,7 @@ import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
 
 import { MovieUploader } from '@/components/MovieUploader';
+import { Hero } from '@/components/hero';
 
 const bebasNeue = localFont({
   src: [

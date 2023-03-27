@@ -1,5 +1,5 @@
 import { MovieTMDB } from '@/interfaces/movies';
-import { getRandomNumber } from '@/libs/mathUtils';
+import { getRandomNumber } from '@/utils/mathUtils';
 
 interface ApiResponse {
   results: Object[];

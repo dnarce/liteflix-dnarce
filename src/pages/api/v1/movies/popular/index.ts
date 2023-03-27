@@ -1,6 +1,6 @@
 import { ErrorResponse } from '@/interfaces/error_response';
 import { LiteFlixMovie, MovieTMDB } from '@/interfaces/movies';
-import { parseMovies } from '@/libs/moviesParser';
+import { parseMovies } from '@/utils/moviesParser';
 import { getPopularMovies } from '@/services/movies';
 import type { NextApiRequest, NextApiResponse } from 'next';
 

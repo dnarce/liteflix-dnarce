@@ -42,10 +42,14 @@ export function UploadMovieForm() {
 
   const handleUploadMovie = () => {
     if (file && movieTitle) {
-      localStorage.setItem(
-        'uploadedMovie',
-        JSON.stringify({ fileName: file.name, title: movieTitle })
+      const existingMovies = JSON.parse(
+        localStorage.getItem('uploadedMovies') || '[]'
       );
+
+      const newMovie = { fileName: file.name, title: movieTitle };
+      const updatedMovies = [...existingMovies, newMovie];
+
+      localStorage.setItem('uploadedMovies', JSON.stringify(updatedMovies));
     }
   };
 

@@ -7,7 +7,6 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
 }
 
-export default function ButtonLink({ className, ...props }: ButtonProps) {
-  const buttonLinkClassName = classNames(className, 'w-[248px]', 'h-[56px]');
-  return <ButtonBase className={buttonLinkClassName} {...props} />;
+export default function ButtonLink(props: ButtonProps) {
+  return <ButtonBase {...props} />;
 }

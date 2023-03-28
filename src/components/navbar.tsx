@@ -27,7 +27,7 @@ export function Navbar() {
               ></Button>
             </div>
 
-            <div className='flex'>
+            <div className='flex items-center'>
               <LiteflixLogo />
               <Button
                 className='hidden lg:flex lg:items-center ml-4'

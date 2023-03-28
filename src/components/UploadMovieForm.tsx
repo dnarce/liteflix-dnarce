@@ -1,3 +1,4 @@
+import { useLocalMoviesContext } from '@/context/local-movies-context';
 import { useModalContext } from '@/context/modal-context';
 import { getRandomNumber } from '@/utils/mathUtils';
 import { saveMovieToLocalStorage } from '@/utils/movieStorage';
@@ -13,6 +14,9 @@ interface UploadMovieFormProps {
 
 export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
   const { toggleModal } = useModalContext();
+  const { localMovies, setLocalMovies } = useLocalMoviesContext();
+  console.log(localMovies);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -61,11 +65,13 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
 
           if (typeof localBackdropPath === 'string') {
             const id = getRandomNumber(1, 500);
-            saveMovieToLocalStorage({
+            const newMovie = {
               id,
               originalTitle,
               localBackdropPath,
-            });
+            };
+            saveMovieToLocalStorage(newMovie);
+            setLocalMovies([...localMovies, newMovie]);
 
             onMovieSaved(originalTitle);
             resetForm();

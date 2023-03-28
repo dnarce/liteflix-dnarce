@@ -10,26 +10,9 @@ import { useModalContext } from '@/context/modal-context';
 
 import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/hero';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getMoviesFromLocalStorage } from '@/utils/movieStorage';
-
-const bebasNeue = localFont({
-  src: [
-    {
-      path: '../../public/fonts/BebasNeueLight.ttf',
-      weight: '200',
-    },
-    {
-      path: '../../public/fonts/BebasNeueRegular.ttf',
-      weight: '400',
-    },
-    {
-      path: '../../public/fonts/BebasNeueBold.ttf',
-      weight: '700',
-    },
-  ],
-  variable: '--font-bebasNeue',
-});
+import { useLocalMoviesContext } from '@/context/local-movies-context';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -45,11 +28,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const popularMoviesResultData: LiteFlixMovie =
     await popularMoviesResponse.json();
 
-  //TODO: borrar esto
-  console.log('nowPlayingResponse: 👇');
-  console.log(nowPlayingResponse);
-  console.log('popularMoviesResultData 👇');
-  console.log(popularMoviesResultData);
   return {
     props: {
       nowPlaying: nowPlayingResultData,
@@ -60,24 +38,39 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
-  const [uploadedMovies, setUploadedMovies] = useState<LiteFlixMovie[]>([]);
+  const { localMovies, setLocalMovies } = useLocalMoviesContext();
   const [gridMovies, setGridMovies] = useState<LiteFlixMovie[]>(popularMovies);
+  const [selectedSource, setSelectedSource] = useState('Populares');
 
-  const onMoviesSourceSelected = (option: string) => {
-    switch (option) {
+  useEffect(() => {
+    const storedMovies = getMoviesFromLocalStorage();
+    setLocalMovies(storedMovies);
+  }, [setLocalMovies]);
+
+  useEffect(() => {
+    switch (selectedSource) {
+      default:
       case 'Populares':
         setGridMovies(popularMovies);
+        break;
       case 'Mis Películas': {
-        const movies = getMoviesFromLocalStorage();
-        console.log(movies);
-        setGridMovies(movies);
+        setGridMovies(localMovies);
+        break;
       }
     }
+
+    if (selectedSource === 'Mis Películas') {
+      setGridMovies(localMovies);
+    }
+  }, [localMovies, selectedSource, popularMovies]);
+
+  const onMoviesSourceSelected = (option: string) => {
+    setSelectedSource(option);
   };
 
   return (
     <div
-      className={`relative ${bebasNeue.className} tracking-widest bg-dark-grey text-white`}
+      className={`relative font-bebas-neue tracking-widest bg-dark-grey text-white`}
     >
       <Navbar />
       <Hero movie={nowPlaying as LiteFlixMovie} />

@@ -6,8 +6,8 @@ export default function ButtonInverse({ className, ...props }: ButtonProps) {
   const buttonInverseClassName = classNames(
     className,
     'text-dark-grey',
-    'bg-white/50',
-    'border-white/50',
+    'bg-white',
+    'border-white',
     'w-[248px]',
     'h-[56px]'
   );

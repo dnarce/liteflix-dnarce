@@ -23,6 +23,7 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
   const [file, setFile] = useState<File | null>(null);
   const [originalTitle, setOriginalTitle] = useState('');
   const [hasError, setHasError] = useState(false);
+  const [isButtonSaveDisabled, setIsButtonSaveDisabled] = useState(true);
 
   const resetForm = () => {
     setIsLoading(false);
@@ -31,6 +32,7 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
     setFile(null);
     setOriginalTitle('');
     setShouldCancelProcess(false);
+    setIsButtonSaveDisabled(true);
   };
 
   const handleFileDrop = (file: File) => {
@@ -43,6 +45,7 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
         if (prevProgress >= 100) {
           clearInterval(timer);
           setIsCompleted(true);
+          setIsButtonSaveDisabled(false);
           return 100;
         }
         return prevProgress + 1;
@@ -123,7 +126,10 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
       </div>
 
       <div className='flex justify-center mt-12'>
-        <ButtonInverse onClick={handleUploadMovie}>
+        <ButtonInverse
+          onClick={handleUploadMovie}
+          disabled={isButtonSaveDisabled}
+        >
           Subir Película
         </ButtonInverse>
       </div>

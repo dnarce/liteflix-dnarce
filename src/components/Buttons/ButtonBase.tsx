@@ -1,9 +1,4 @@
-import { MouseEventHandler, ButtonHTMLAttributes } from 'react';
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: JSX.Element;
-  children?: React.ReactNode;
-}
+import { ButtonProps } from '@/interfaces/button_props';
 
 export default function ButtonBase({
   icon,

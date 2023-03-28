@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'bebas-neue': ['Bebas Neue', 'sans-serif'],
+      },
       colors: {
         'dark-grey': '#242424',
         primary: '#64EEBC',

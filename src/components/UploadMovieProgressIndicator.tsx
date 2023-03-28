@@ -1,4 +1,4 @@
-import { Button, BUTTON_LINK } from './Button';
+import { ButtonLink } from './Buttons';
 import { ProgressBar } from './ProgressBar';
 
 interface UploadMovieProgressIndicatorProps {
@@ -23,7 +23,7 @@ export function UploadMovieProgressIndicator({
           <ProgressBar progress={progress} color={progressColor} />
           {!isCompleted && (
             <div className='flex w-full justify-end mt-4'>
-              <Button buttonType={BUTTON_LINK}>Cancelar</Button>
+              <ButtonLink>Cancelar</ButtonLink>
             </div>
           )}
         </>

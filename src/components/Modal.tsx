@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 import classNames from 'classnames';
-import { Button, BUTTON_LINK } from './Button';
 import { CloseIcon } from './icons';
+import { ButtonLink } from './Buttons';
 
 interface ModalProps {
   isOpen: boolean;
@@ -35,11 +35,7 @@ export function Modal({ isOpen, onClose, children }: ModalProps) {
         }}
       >
         <div className='md:flex w-full justify-end hidden'>
-          <Button
-            buttonType={BUTTON_LINK}
-            icon={<CloseIcon />}
-            onClick={onClose}
-          ></Button>
+          <ButtonLink icon={<CloseIcon />} onClick={onClose}></ButtonLink>
         </div>
         {children}
       </div>

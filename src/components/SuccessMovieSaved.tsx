@@ -1,6 +1,6 @@
 import { useModalContext } from '@/context/modal-context';
 import { MouseEventHandler } from 'react';
-import { Button, BUTTON_PRIMARY } from './Button';
+import { ButtonPrimary } from './Buttons';
 import { LiteflixLogo } from './LiteflixLogo';
 
 interface SuccessMovieSavedProps {
@@ -23,15 +23,14 @@ export function SuccessMovieSaved({
       </h1>
       <p className='text-xl tracking-[4px] leading-6 text-center md:mt-6'>{`${originaTitle} fue correctamente subida.`}</p>
       <div className='flex justify-center md:mt-[92px]'>
-        <Button
-          buttonType={BUTTON_PRIMARY}
+        <ButtonPrimary
           onClick={(e) => {
             toggleModal(e);
             setIsMovieSaved(false);
           }}
         >
           Ir a Home
-        </Button>
+        </ButtonPrimary>
       </div>
     </>
   );

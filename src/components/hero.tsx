@@ -1,8 +1,7 @@
 import { LiteFlixMovie } from '../interfaces/movies';
-import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from './Button';
+import { ButtonPrimary, ButtonSecondary } from './Buttons';
 import { PlayIcon, PlusIcon } from './icons';
 
-//TODO: mover a Interface
 interface HeroProps {
   movie: LiteFlixMovie;
 }
@@ -27,16 +26,13 @@ export function Hero({ movie }: HeroProps) {
         <h1 className='text-[76px] text-primary font-bold uppercase tracking-[12px] md:tracking-[16px] leading-none'>
           {originalTitle}
         </h1>
-        <Button
+        <ButtonPrimary
           className='mx-6 md:mx-0 md:mr-6 my-4'
           icon={<PlayIcon />}
-          buttonType={BUTTON_PRIMARY}
         >
           Reproducir
-        </Button>
-        <Button icon={<PlusIcon />} buttonType={BUTTON_SECONDARY}>
-          Mi Lista
-        </Button>
+        </ButtonPrimary>
+        <ButtonSecondary icon={<PlusIcon />}>Mi Lista</ButtonSecondary>
       </div>
     </section>
   );

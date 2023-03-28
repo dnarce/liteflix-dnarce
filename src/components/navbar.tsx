@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import { Button, BUTTON_LINK } from './Button';
+
 //TODO: mover componentes, iconos avatar a sus respectivos directorios
 import Avatar from '../../public/images/avatar.jpeg';
 import { MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
 import { LiteflixLogo } from './LiteflixLogo';
 import { Drawer } from './Drawer';
 import { useToggleDrawer } from '@/hooks/useToggleDrawer';
-import { MouseEventHandler } from 'react';
 import { useModalContext } from '@/context/modal-context';
+import { ButtonLink } from './Buttons';
 
 export function Navbar() {
   const { isDrawerOpen, toggleDrawer } = useToggleDrawer();
@@ -19,38 +19,34 @@ export function Navbar() {
         <div className='container mx-auto px-4'>
           <div className='flex items-center justify-between py-4'>
             <div className='lg:hidden'>
-              <Button
+              <ButtonLink
                 className='lg:flex lg:items-center mr-10'
                 icon={<MenuIcon />}
-                buttonType={BUTTON_LINK}
                 onClick={() => toggleDrawer()}
-              ></Button>
+              ></ButtonLink>
             </div>
 
             <div className='flex items-center'>
               <LiteflixLogo />
-              <Button
+              <ButtonLink
                 className='hidden lg:flex lg:items-center ml-4'
                 icon={<PlusIcon />}
-                buttonType={BUTTON_LINK}
                 onClick={toggleModal}
               >
                 Agregar Pelicula
-              </Button>
+              </ButtonLink>
             </div>
 
             <div className='flex'>
-              <Button
+              <ButtonLink
                 className='hidden lg:flex lg:items-center mr-10'
                 icon={<MenuIcon />}
-                buttonType={BUTTON_LINK}
                 onClick={() => toggleDrawer()}
-              ></Button>
-              <Button
+              ></ButtonLink>
+              <ButtonLink
                 className='hidden lg:flex lg:items-center mr-10'
                 icon={<NotificationActiveIcon />}
-                buttonType={BUTTON_LINK}
-              ></Button>
+              ></ButtonLink>
               <div className='cursor-pointer'>
                 <Image
                   src={Avatar}

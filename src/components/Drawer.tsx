@@ -3,10 +3,9 @@ import { useToggleDrawer } from '@/hooks/useToggleDrawer';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MouseEventHandler } from 'react';
 
 import Avatar from '../../public/images/avatar.jpeg';
-import { Button, BUTTON_LINK } from './Button';
+import { ButtonLink } from './Buttons';
 import { CloseIcon, NotificationActiveIcon, PlusIcon } from './icons';
 
 interface DrawerProps {
@@ -33,18 +32,15 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
   return (
     <div className={drawerClasses}>
       <div className='flex justify-between'>
-        <Button
+        <ButtonLink
           icon={<CloseIcon />}
-          buttonType='link'
           onClick={() => toggleDrawer()}
-        ></Button>
-
+        ></ButtonLink>
         <div className='flex'>
-          <Button
+          <ButtonLink
             className='mr-11'
             icon={<NotificationActiveIcon />}
-            buttonType={BUTTON_LINK}
-          ></Button>
+          ></ButtonLink>
           <div className='cursor-pointer'>
             <Image
               src={Avatar}
@@ -95,14 +91,13 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
             </Link>
           </li>
           <li>
-            <Button
+            <ButtonLink
               className='mr-11 font-bold'
               icon={<PlusIcon />}
-              buttonType={BUTTON_LINK}
               onClick={toggleModal}
             >
               Agregar Pelícla
-            </Button>
+            </ButtonLink>
           </li>
           <li>
             <Link href={''} onClick={linkHandler}>

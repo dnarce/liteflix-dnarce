@@ -49,15 +49,17 @@ export function MovieCard({
               {originalTitle}
             </span>
           </div>
-          <div className='flex flex-row items-center justify-items-center justify-between'>
-            <span className='flex items-center'>
-              <span className='mr-2'>
-                <StarIcon />
+          {!localBackdropPath && (
+            <div className='flex flex-row items-center justify-items-center justify-between'>
+              <span className='flex items-center'>
+                <span className='mr-2'>
+                  <StarIcon />
+                </span>
+                {voteAverage}
               </span>
-              {voteAverage}
-            </span>
-            <span>{releaseYear}</span>
-          </div>
+              <span>{releaseYear}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

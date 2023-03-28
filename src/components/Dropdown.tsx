@@ -14,9 +14,7 @@ export function Dropdown({ items, onSelectItem = () => {} }: DropdownProps) {
     setIsOpen(!isOpen);
   };
 
-  const handleItemClick = (item: string) => {
-    console.log(item);
-  };
+  const handleItemClick = (item: string) => {};
 
   return (
     <>

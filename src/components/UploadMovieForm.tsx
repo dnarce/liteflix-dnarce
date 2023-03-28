@@ -15,7 +15,6 @@ interface UploadMovieFormProps {
 export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
   const { toggleModal } = useModalContext();
   const { localMovies, setLocalMovies } = useLocalMoviesContext();
-  console.log(localMovies);
 
   const [isLoading, setIsLoading] = useState(false);
   const [shouldCancelProcess, setShouldCancelProcess] = useState(false);

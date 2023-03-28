@@ -3,7 +3,7 @@ import { useModalContext } from '@/context/modal-context';
 import { getRandomNumber } from '@/utils/mathUtils';
 import { saveMovieToLocalStorage } from '@/utils/movieStorage';
 import { useState } from 'react';
-import { ButtonInverse } from './Buttons';
+import { ButtonInverse, ButtonSecondary } from './Buttons';
 import { FileDropZone } from './FileDropZone';
 
 import { UploadMovieProgressIndicator } from './UploadMovieProgressIndicator';
@@ -134,7 +134,7 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
         </ButtonInverse>
       </div>
       <div className='flex justify-center mt-6 md:hidden'>
-        <ButtonInverse onClick={toggleModal}>Salir</ButtonInverse>
+        <ButtonSecondary onClick={toggleModal}>Salir</ButtonSecondary>
       </div>
     </>
   );

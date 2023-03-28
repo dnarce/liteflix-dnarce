@@ -15,7 +15,7 @@ interface HomeProps {
   popularMovies: LiteFlixMovie[];
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const nowPlayingResponse = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
   const nowPlayingResultData: LiteFlixMovie = await nowPlayingResponse.json();

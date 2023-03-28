@@ -17,7 +17,6 @@ export function MovieCard({
   return (
     <div className='group inline-block mb-4 mr-4 p-4'>
       <div
-        id='div-1'
         className='relative flex items-center justify-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer group-hover:hidden'
         style={{
           backgroundImage,
@@ -36,7 +35,6 @@ export function MovieCard({
       </div>
 
       <div
-        id='div-2'
         className='hidden group-hover:flex items-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer'
         style={{
           backgroundImage,

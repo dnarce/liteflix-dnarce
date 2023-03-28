@@ -2,13 +2,12 @@ import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
-import { MoviesGrid } from '@/components/MoviesGrid';
-import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
+import { homeMainClassNames } from './index.styles';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -36,9 +35,7 @@ export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
 
   return (
-    <div
-      className={`relative font-bebas-neue tracking-widest bg-dark-grey text-white`}
-    >
+    <div className={homeMainClassNames}>
       <Navbar />
       <Hero movie={nowPlaying as LiteFlixMovie} />
       <MediaGallerySelector popularMovies={popularMovies} />

@@ -2,7 +2,6 @@ import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
-import localFont from 'next/font/local';
 import { MoviesGrid } from '@/components/MoviesGrid';
 import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';

@@ -43,7 +43,10 @@ export function FileDropZone({ onFileDrop }: FileDropZoneProps) {
         <span className='mr-2'>
           <ClipIcon />
         </span>
-        Agregá un archivo o arrastralo y soltalo aquí
+        <span className='hidden md:flex'>
+          Agregá un archivo o arrastralo y soltalo aquí
+        </span>
+        <span className='md:hidden'>Agregá un archivo</span>
       </p>
       <input
         type='file'

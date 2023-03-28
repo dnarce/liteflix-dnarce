@@ -6,12 +6,9 @@ import { MoviesGrid } from '@/components/MoviesGrid';
 import { Dropdown } from '@/components/Dropdown';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
-
 import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/hero';
-import { useEffect, useState } from 'react';
-import { getMoviesFromLocalStorage } from '@/utils/movieStorage';
-import { useLocalMoviesContext } from '@/context/local-movies-context';
+import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -37,35 +34,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
-  const { localMovies, setLocalMovies } = useLocalMoviesContext();
-  const [gridMovies, setGridMovies] = useState<LiteFlixMovie[]>(popularMovies);
-  const [selectedSource, setSelectedSource] = useState('Populares');
-
-  useEffect(() => {
-    const storedMovies = getMoviesFromLocalStorage();
-    setLocalMovies(storedMovies);
-  }, [setLocalMovies]);
-
-  useEffect(() => {
-    switch (selectedSource) {
-      default:
-      case 'Populares':
-        setGridMovies(popularMovies);
-        break;
-      case 'Mis Películas': {
-        setGridMovies(localMovies);
-        break;
-      }
-    }
-
-    if (selectedSource === 'Mis Películas') {
-      setGridMovies(localMovies);
-    }
-  }, [localMovies, selectedSource, popularMovies]);
-
-  const onMoviesSourceSelected = (option: string) => {
-    setSelectedSource(option);
-  };
 
   return (
     <div
@@ -73,19 +41,7 @@ export default function Home({ nowPlaying, popularMovies }: HomeProps) {
     >
       <Navbar />
       <Hero movie={nowPlaying as LiteFlixMovie} />
-      <section
-        id='movies-selection'
-        className='lg:absolute lg:top-32 lg:right-24'
-      >
-        <div className='text-center mb-8'>
-          <label>Ver:</label>{' '}
-          <Dropdown
-            items={['Populares', 'Mis Películas']}
-            onSelectItem={onMoviesSourceSelected}
-          />
-        </div>
-        <MoviesGrid movies={gridMovies} />
-      </section>
+      <MediaGallerySelector popularMovies={popularMovies} />
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <MovieUploader />
       </Modal>

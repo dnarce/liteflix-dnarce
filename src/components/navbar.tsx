@@ -1,27 +1,33 @@
 import Image from 'next/image';
-
-//TODO: mover componentes, iconos avatar a sus respectivos directorios
 import Avatar from '../../public/images/avatar.jpeg';
-import { MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
+import { CloseIcon, MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
 import { LiteflixLogo } from './LiteflixLogo';
 import { Drawer } from './Drawer';
 import { useToggleDrawer } from '@/hooks/useToggleDrawer';
 import { useModalContext } from '@/context/modal-context';
 import { ButtonLink } from './Buttons';
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
 
 export function Navbar() {
   const { isDrawerOpen, toggleDrawer } = useToggleDrawer();
   const { toggleModal } = useModalContext();
+  const navbarClasses = classNames('fixed top-0 left-0 w-full z-50');
+  const [menuIcon, setMenuIcon] = useState(<MenuIcon />);
+  useEffect(() => {
+    setMenuIcon(isDrawerOpen ? <CloseIcon /> : <MenuIcon />);
+  }, [isDrawerOpen]);
+  //
 
   return (
     <>
-      <nav className='fixed top-0 left-0 w-full z-10'>
+      <nav className={navbarClasses}>
         <div className='container mx-auto px-4'>
           <div className='flex items-center justify-between py-4'>
             <div className='lg:hidden'>
               <ButtonLink
                 className='lg:flex lg:items-center mr-10'
-                icon={<MenuIcon />}
+                icon={menuIcon}
                 onClick={() => toggleDrawer()}
               ></ButtonLink>
             </div>
@@ -39,12 +45,18 @@ export function Navbar() {
 
             <div className='flex'>
               <ButtonLink
-                className='hidden lg:flex lg:items-center mr-10'
-                icon={<MenuIcon />}
+                className={classNames(
+                  'hidden lg:flex lg:items-center transition-all duration-300 transform',
+                  {
+                    'mr-28': isDrawerOpen,
+                    'mr-10': !isDrawerOpen,
+                  }
+                )}
+                icon={menuIcon}
                 onClick={() => toggleDrawer()}
               ></ButtonLink>
               <ButtonLink
-                className='hidden lg:flex lg:items-center mr-10'
+                className={'hidden lg:flex lg:items-center mr-10'}
                 icon={<NotificationActiveIcon />}
               ></ButtonLink>
               <div className='cursor-pointer'>

@@ -21,7 +21,7 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
   };
 
   const drawerClasses = classNames(
-    'bg-dark-grey px-16 py-5 drawer-transition fixed inset-y-0 transform z-20 w-full lg:w-1/3',
+    'bg-dark-grey px-10 py-5 drawer-transition fixed inset-y-0 transform z-20 w-full lg:w-1/3',
     'transition-all duration-500 transform',
     {
       'right-0': isOpen,
@@ -31,28 +31,6 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
 
   return (
     <div className={drawerClasses}>
-      <div className='flex justify-between'>
-        <ButtonLink
-          icon={<CloseIcon />}
-          onClick={() => toggleDrawer()}
-        ></ButtonLink>
-        <div className='flex'>
-          <ButtonLink
-            className='mr-11'
-            icon={<NotificationActiveIcon />}
-          ></ButtonLink>
-          <div className='cursor-pointer'>
-            <Image
-              src={Avatar}
-              className='object-cover rounded-full'
-              alt='avatar image'
-              width={42}
-              height={42}
-            />
-          </div>
-        </div>
-      </div>
-
       <div className='mt-24 font-extralight'>
         <ul className='[&>li]:mt-10 text-drawer'>
           <li>

@@ -18,10 +18,12 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
   console.log(localMovies);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [shouldCancelProcess, setShouldCancelProcess] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [file, setFile] = useState<File | null>(null);
   const [originalTitle, setOriginalTitle] = useState('');
+  const [hasError, setHasError] = useState(false);
 
   const resetForm = () => {
     setIsLoading(false);
@@ -29,6 +31,7 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
     setProgress(0);
     setFile(null);
     setOriginalTitle('');
+    setShouldCancelProcess(false);
   };
 
   const handleFileDrop = (file: File) => {
@@ -102,7 +105,11 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
           isCompleted={isCompleted}
           isLoading={isLoading}
           progress={progress}
-          progressColor={'bg-primary'}
+          hasError={hasError}
+          handleOnCancel={() => {
+            setShouldCancelProcess(true);
+          }}
+          handleOnError={resetForm}
         />
       </div>
       <div className='flex justify-center mt-4 mb-4'>

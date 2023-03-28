@@ -10,6 +10,8 @@ import { useModalContext } from '@/context/modal-context';
 
 import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/hero';
+import { useState } from 'react';
+import { getMoviesFromLocalStorage } from '@/utils/movieStorage';
 
 const bebasNeue = localFont({
   src: [
@@ -28,7 +30,7 @@ const bebasNeue = localFont({
   ],
   variable: '--font-bebasNeue',
 });
-//TODO: Mover a interfaces
+
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
   popularMovies: LiteFlixMovie[];
@@ -56,24 +58,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default function Home(props: HomeProps) {
+export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
+  const [uploadedMovies, setUploadedMovies] = useState<LiteFlixMovie[]>([]);
+  const [gridMovies, setGridMovies] = useState<LiteFlixMovie[]>(popularMovies);
+
+  const onMoviesSourceSelected = (option: string) => {
+    switch (option) {
+      case 'Populares':
+        setGridMovies(popularMovies);
+      case 'Mis Películas': {
+        const movies = getMoviesFromLocalStorage();
+        console.log(movies);
+        setGridMovies(movies);
+      }
+    }
+  };
 
   return (
     <div
       className={`relative ${bebasNeue.className} tracking-widest bg-dark-grey text-white`}
     >
       <Navbar />
-      <Hero movie={props.nowPlaying as LiteFlixMovie} />
+      <Hero movie={nowPlaying as LiteFlixMovie} />
       <section
         id='movies-selection'
         className='lg:absolute lg:top-32 lg:right-24'
       >
         <div className='text-center mb-8'>
           <label>Ver:</label>{' '}
-          <Dropdown items={['Populares', 'Mis Películas']} />
+          <Dropdown
+            items={['Populares', 'Mis Películas']}
+            onSelectItem={onMoviesSourceSelected}
+          />
         </div>
-        <MoviesGrid movies={props.popularMovies as LiteFlixMovie[]} />
+        <MoviesGrid movies={gridMovies} />
       </section>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <MovieUploader />

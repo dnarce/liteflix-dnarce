@@ -16,19 +16,20 @@ export interface MovieTMDB {
 }
 
 export interface LiteFlixMovie {
-  adult: boolean;
-  backdropPath: string;
-  genreIds: number[];
+  adult?: boolean;
+  backdropPath?: string;
+  localBackdropPath?: string;
+  genreIds?: number[];
   id: number;
-  originalLanguage: string;
+  originalLanguage?: string;
   originalTitle: string;
-  overview: string;
-  popularity: number;
-  posterPath: string;
-  releaseDate: string;
-  title: string;
-  video: boolean;
-  voteAverage: number;
-  voteCount: number;
+  overview?: string;
+  popularity?: number;
+  posterPath?: string;
+  releaseDate?: string;
+  title?: string;
+  video?: boolean;
+  voteAverage?: number;
+  voteCount?: number;
   isLiteFlixOriginal?: boolean;
 }

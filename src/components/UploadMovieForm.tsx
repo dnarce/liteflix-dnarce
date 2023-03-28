@@ -1,4 +1,6 @@
 import { useModalContext } from '@/context/modal-context';
+import { getRandomNumber } from '@/utils/mathUtils';
+import { saveMovieToLocalStorage } from '@/utils/movieStorage';
 import { useState } from 'react';
 import { Button, BUTTON_PRIMARY, BUTTON_SECONDARY } from './Button';
 import { FileDropZone } from './FileDropZone';
@@ -15,14 +17,14 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [file, setFile] = useState<File | null>(null);
-  const [movieTitle, setMovieTitle] = useState('');
+  const [originalTitle, setOriginalTitle] = useState('');
 
   const resetForm = () => {
     setIsLoading(false);
     setIsCompleted(false);
     setProgress(0);
     setFile(null);
-    setMovieTitle('');
+    setOriginalTitle('');
   };
 
   const handleFileDrop = (file: File) => {
@@ -42,22 +44,44 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
     }, 100);
   };
 
-  const handleMovieTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMovieTitle(e.target.value);
+  const handleOriginalTitleChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOriginalTitle(e.target.value);
   };
 
-  const handleUploadMovie = () => {
-    if (file && movieTitle) {
-      const existingMovies = JSON.parse(
-        localStorage.getItem('uploadedMovies') || '[]'
-      );
+  const handleUploadMovie = async () => {
+    if (file && originalTitle) {
+      try {
+        const reader = new FileReader();
 
-      const newMovie = { fileName: file.name, title: movieTitle };
-      const updatedMovies = [...existingMovies, newMovie];
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          const localBackdropPath = reader.result;
 
-      localStorage.setItem('uploadedMovies', JSON.stringify(updatedMovies));
-      onMovieSaved(movieTitle);
-      resetForm();
+          if (typeof localBackdropPath === 'string') {
+            const id = getRandomNumber(1, 500);
+            saveMovieToLocalStorage({
+              id,
+              originalTitle,
+              localBackdropPath,
+            });
+
+            onMovieSaved(originalTitle);
+            resetForm();
+          } else {
+            console.error(
+              'Error converting file to base64 string:',
+              localBackdropPath
+            );
+          }
+        };
+        reader.onerror = (error) => {
+          console.error('Error reading file:', error);
+        };
+      } catch (error) {
+        console.error('Error converting file to image element:', error);
+      }
     }
   };
 
@@ -78,11 +102,11 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
       <div className='flex justify-center mt-4 mb-4'>
         <input
           type='text'
-          name='movieTitle'
-          id='movieTitle'
+          name='originalTitle'
+          id='originalTitle'
           className='w-full max-w-[248px] text-center py-2 border-b-[1px] border-white bg-transparent text-white placeholder-white focus:placeholder-transparent text-base tracking-[4px] focus:outline-none'
           placeholder='Título'
-          onChange={handleMovieTitleChange}
+          onChange={handleOriginalTitleChange}
         />
       </div>
 

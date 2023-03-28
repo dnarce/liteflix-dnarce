@@ -20,6 +20,9 @@ export function UploadMovieProgressIndicator({
 }: UploadMovieProgressIndicatorProps) {
   let progressText = '';
   let progressColor = 'bg-primary';
+
+  console.log(hasError);
+
   if (isLoading && !hasError) {
     progressText = `Cargando ${progress}%`;
   } else if (hasError) {

@@ -33,11 +33,21 @@ export function UploadMovieForm({ onMovieSaved }: UploadMovieFormProps) {
     setOriginalTitle('');
     setShouldCancelProcess(false);
     setIsButtonSaveDisabled(true);
+    setHasError(false);
   };
 
   const handleFileDrop = (file: File) => {
     setIsLoading(true);
     setFile(file);
+
+    const validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+
+    if (!fileExtension || !validExtensions.includes(fileExtension)) {
+      setProgress(100);
+      setHasError(true);
+      return;
+    }
 
     // Simulación progress
     const timer = setInterval(() => {

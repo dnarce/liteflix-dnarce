@@ -38,7 +38,7 @@ export function MovieCard({ movie, index }: MovieCardProps) {
   } = useMotionEffectsContext();
 
   return (
-    <div className='group inline-block mr-4 p-4'>
+    <div className='flex mr-4 p-4 w-full'>
       <motion.div
         initial={cardContainerEffect.initial}
         animate={cardContainerEffect.animate}

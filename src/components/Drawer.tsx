@@ -2,7 +2,7 @@ import { useModalContext } from '@/context/modal-context';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { ButtonLink } from './Buttons';
-import { PlusIcon } from './icons';
+import { CloseIcon, PlusIcon } from './icons';
 
 interface DrawerProps {
   isOpen: boolean;
@@ -24,7 +24,7 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
     'fixed',
     'inset-y-0',
     'transform',
-    'z-40',
+    'z-30',
     'w-full',
     'lg:w-1/3',
     'transition-all',
@@ -38,6 +38,9 @@ export function Drawer({ isOpen, toggleDrawer }: DrawerProps) {
 
   return (
     <div className={drawerClasses}>
+      <div className='justify-between z-50 fixed'>
+        <ButtonLink onClick={linkHandler} icon={<CloseIcon />}></ButtonLink>
+      </div>
       <div className='mt-24 font-extralight'>
         <ul className='[&>li]:mt-10 text-drawer'>
           <li>

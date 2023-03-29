@@ -17,7 +17,9 @@ import { useEffect, useState } from 'react';
 export function Navbar() {
   const { isDrawerOpen, toggleDrawer } = useToggleDrawer();
   const { toggleModal } = useModalContext();
-  const navbarClasses = classNames('fixed top-0 left-0 w-full z-50');
+  const navbarClasses = classNames('fixed top-0 left-0 w-full z-40', {
+    'pointer-events-none': isDrawerOpen,
+  });
   const [menuIcon, setMenuIcon] = useState(<MenuIcon />);
   useEffect(() => {
     setMenuIcon(isDrawerOpen ? <CloseIcon /> : <MenuIcon />);
@@ -49,17 +51,13 @@ export function Navbar() {
             </div>
 
             <div className='flex'>
-              <ButtonLink
-                className={classNames(
-                  'hidden lg:flex lg:items-center transition-all duration-300 transform',
-                  {
-                    'mr-28': isDrawerOpen,
-                    'mr-10': !isDrawerOpen,
-                  }
-                )}
-                icon={menuIcon}
-                onClick={() => toggleDrawer()}
-              ></ButtonLink>
+              {!isDrawerOpen && (
+                <ButtonLink
+                  className={classNames('hidden lg:flex lg:items-center mr-10')}
+                  icon={menuIcon}
+                  onClick={() => toggleDrawer()}
+                ></ButtonLink>
+              )}
               <ButtonLink
                 className={'hidden lg:flex lg:items-center mr-10'}
                 icon={<NotificationActiveIcon />}

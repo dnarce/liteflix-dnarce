@@ -8,6 +8,7 @@ import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/Hero/Hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 import classNames from 'classnames';
+import { loadNowPlayingMovies, loadPopularMovies } from '@/utils/moviesApi';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -15,13 +16,8 @@ interface HomeProps {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const nowPlayingResponse = await fetch(`${apiUrl}/api/v1/movies/now_playing`);
-  const nowPlayingResultData: LiteFlixMovie = await nowPlayingResponse.json();
-
-  const popularMoviesResponse = await fetch(`${apiUrl}/api/v1/movies/popular`);
-  const popularMoviesResultData: LiteFlixMovie =
-    await popularMoviesResponse.json();
+  const nowPlayingResultData = await loadNowPlayingMovies();
+  const popularMoviesResultData = await loadPopularMovies();
 
   return {
     props: {

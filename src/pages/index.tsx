@@ -5,7 +5,7 @@ import { LiteFlixMovie } from '@/interfaces/movies';
 import { Modal } from '@/components/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';
-import { Hero } from '@/components/hero';
+import { Hero } from '@/components/Hero/hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 import { homeMainClassNames } from './index.styles';
 

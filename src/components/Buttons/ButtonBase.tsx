@@ -9,7 +9,7 @@ export default function ButtonBase({
 }: ButtonProps) {
   return (
     <button
-      className={`uppercase tracking-[4px] leading-[22px] text-[18px] ${className} ${
+      className={`hover:brightness-150 active:brightness-125 uppercase tracking-[4px] leading-[22px] text-[18px] ${className} ${
         disabled ? 'bg-opacity-50' : ''
       }`}
       disabled={disabled}

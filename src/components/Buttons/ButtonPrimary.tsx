@@ -6,8 +6,6 @@ export default function ButtonPrimary({ className, ...props }: ButtonProps) {
   const buttonPrimaryClassName = classNames(
     className,
     'bg-dark-grey',
-    'border-[1px]',
-    'border-white',
     'w-[248px]',
     'h-[56px]'
   );

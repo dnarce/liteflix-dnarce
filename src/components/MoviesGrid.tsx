@@ -25,7 +25,8 @@ export function MoviesGrid({ movies }: MoviesGridProps) {
     'md:max-w-screen',
     'justify-items-center',
     'lg:max-h-2/3-screen',
-    'lg:overflow-y-auto'
+    'lg:overflow-y-auto',
+    'md:mb-8'
   );
   return (
     <div className={moviesGridClases}>

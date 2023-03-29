@@ -13,6 +13,7 @@ import {
   baseHiddenCardTitleClasses,
   baseHiddenCardExtraContentClasses,
 } from './movie-card.styles';
+import classNames from 'classnames';
 
 interface MovieCardProps {
   movie: LiteFlixMovie;
@@ -77,8 +78,11 @@ export function MovieCard({ movie, index }: MovieCardProps) {
         </div>
       </motion.div>
 
-      <div
-        className={baseHiddenContainerClasses}
+      <motion.div
+        whileHover={{ scale: 1 }}
+        initial={{ scale: 1.5 }}
+        animate={{ scale: 1, transition: { duration: 20 } }}
+        className={classNames(baseHiddenContainerClasses, 'overflow-hidden')}
         style={{
           backgroundImage,
         }}
@@ -102,7 +106,7 @@ export function MovieCard({ movie, index }: MovieCardProps) {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

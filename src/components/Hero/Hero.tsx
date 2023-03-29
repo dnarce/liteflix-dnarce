@@ -39,6 +39,7 @@ export function Hero({ movie }: HeroProps) {
         animate={heroImageEffect.animate}
       ></motion.img>
       <div className={heroGradientClasses}></div>
+
       <div className={heroBodyContainerClasses}>
         {isLiteFlixOriginal && (
           <motion.h2

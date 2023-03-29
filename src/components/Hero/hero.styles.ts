@@ -63,5 +63,6 @@ export const heroBodyContainerClasses = classNames(
   'md:absolute',
   'md:bottom-0',
   'md:mb-40',
-  'lg:max-w-2/3-screen'
+  'w-1/3-screen',
+  'container'
 );

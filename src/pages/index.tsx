@@ -2,10 +2,10 @@ import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
-import { Modal } from '@/components/Modal';
+import { Modal } from '@/components/Modal/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';
-import { Hero } from '@/components/Hero/hero';
+import { Hero } from '@/components/Hero/Hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 import { homeMainClassNames } from './index.styles';
 

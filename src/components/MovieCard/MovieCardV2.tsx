@@ -1,6 +1,8 @@
 import { LiteFlixMovie } from '@/interfaces/movies';
 import classNames from 'classnames';
 import { PlayCircleIcon, StarIcon } from '../icons';
+import { motion } from 'framer-motion';
+import { useMotionEffectsContext } from '@/context/motion-effects-context';
 
 interface MovieCardProps {
   movie: LiteFlixMovie;
@@ -19,8 +21,17 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
     ? `url('${localBackdropPath}')`
     : `url('https://image.tmdb.org/t/p/w500${backdropPath}')`;
   const releaseYear = releaseDate?.split('-')[0];
+  const {
+    card: { cardContainerEffect },
+  } = useMotionEffectsContext();
   return (
-    <div
+    <motion.div
+      initial={cardContainerEffect.initial}
+      animate={cardContainerEffect.animate}
+      transition={{
+        opacity: { duration: 1.2, delay: index / 5 },
+        y: { duration: 0.75, delay: index / 6 },
+      }}
       className={classNames(
         'flex',
         'flex-col',
@@ -59,23 +70,38 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
           'hover:flex-row'
         )}
       >
-        <span className='group-hover:hidden'>
+        <motion.span
+          initial={cardContainerEffect.initial}
+          animate={cardContainerEffect.animate}
+          transition={{
+            opacity: { duration: 1, delay: index / 5 },
+            y: { duration: 0.5, delay: index / 6 },
+          }}
+          className='group-hover:hidden'
+        >
           <PlayCircleIcon size='large' />
-        </span>
+        </motion.span>
         <span className='hidden group-hover:block mr-2'>
           <PlayCircleIcon />
         </span>
-        <h1
+        <motion.h1
+          initial={cardContainerEffect.initial}
+          animate={cardContainerEffect.animate}
+          transition={{
+            opacity: { duration: 1, delay: index / 5 },
+            y: { duration: 0.5, delay: index / 6 },
+          }}
           className={classNames(
             'w-full',
             'text-ellipsis',
             'overflow-hidden',
             'whitespace-nowrap',
+            'text-center',
             'mt-2'
           )}
         >
           {originalTitle}
-        </h1>
+        </motion.h1>
       </div>
       <div
         className={classNames(
@@ -96,6 +122,6 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         </span>
         <span>{releaseYear}</span>
       </div>
-    </div>
+    </motion.div>
   );
 }

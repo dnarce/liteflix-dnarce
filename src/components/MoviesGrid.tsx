@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { EmptyCard } from './MovieCard/EmptyCard';
 import { MovieCard } from './MovieCard/MovieCard';
+import { MovieCardV2 } from './MovieCard/MovieCardV2';
 
 interface MoviesGridProps {
   movies: LiteFlixMovie[];
@@ -33,7 +34,7 @@ export function MoviesGrid({ movies }: MoviesGridProps) {
     <div className={moviesGridClases}>
       {!shouldShowEmptyCard &&
         movies.map((movie, index) => (
-          <MovieCard key={movie.id} movie={movie} index={index} />
+          <MovieCardV2 key={movie.id} movie={movie} index={index} />
         ))}
       {shouldShowEmptyCard && <EmptyCard />}
     </div>

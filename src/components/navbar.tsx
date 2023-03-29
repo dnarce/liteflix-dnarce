@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Avatar from '../../public/images/avatar.jpeg';
+import Avatar from '../../public/images/avatar2.jpeg';
 import { CloseIcon, MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
 import { LiteflixLogo } from './LiteflixLogo';
 import { Drawer } from './Drawer';

@@ -1,13 +1,29 @@
 import { LiteFlixMovie } from '@/interfaces/movies';
 import { PlayCircleIcon, StarIcon } from './icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export function MovieCard({
-  originalTitle,
-  backdropPath,
-  localBackdropPath,
-  voteAverage,
-  releaseDate,
-}: LiteFlixMovie) {
+interface MovieCardProps {
+  movie: LiteFlixMovie;
+  index: number;
+}
+
+const cardContainerEffect = {
+  initial: { y: 50, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: {
+    opacity: { duration: 1.2, delay: 0.5 },
+    y: { duration: 0.75, delay: 0.5 },
+  },
+};
+
+export function MovieCard({ movie, index }: MovieCardProps) {
+  const {
+    originalTitle,
+    backdropPath,
+    localBackdropPath,
+    voteAverage,
+    releaseDate,
+  } = movie;
   const backgroundImage = localBackdropPath
     ? `url('${localBackdropPath}')`
     : `url('https://image.tmdb.org/t/p/w500${backdropPath}')`;
@@ -15,8 +31,14 @@ export function MovieCard({
   const releaseYear = releaseDate?.split('-')[0];
 
   return (
-    <div className='group inline-block mb-4 mr-4 p-4'>
-      <div
+    <div className='group inline-block mr-4 p-4'>
+      <motion.div
+        initial={cardContainerEffect.initial}
+        animate={cardContainerEffect.animate}
+        transition={{
+          opacity: { duration: 1.2, delay: index / 5 },
+          y: { duration: 0.75, delay: index / 6 },
+        }}
         className='relative flex items-center justify-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer group-hover:hidden'
         style={{
           backgroundImage,
@@ -25,14 +47,30 @@ export function MovieCard({
         <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/60 via-black/30 to-opacity-0'></div>
 
         <div className='flex flex-col items-center justify-center inset-0'>
-          <span className='block'>
+          <motion.span
+            initial={cardContainerEffect.initial}
+            animate={cardContainerEffect.animate}
+            transition={{
+              opacity: { duration: 1, delay: index / 5 },
+              y: { duration: 0.5, delay: index / 6 },
+            }}
+            className='block'
+          >
             <PlayCircleIcon size='large' />
-          </span>
-          <h1 className='absolute bottom-3.5 text-center w-full text-ellipsis overflow-hidden whitespace-nowrap px-2'>
+          </motion.span>
+          <motion.h1
+            initial={cardContainerEffect.initial}
+            animate={cardContainerEffect.animate}
+            transition={{
+              opacity: { duration: 1, delay: index / 5 },
+              y: { duration: 0.5, delay: index / 6 },
+            }}
+            className='absolute bottom-3.5 text-center w-full text-ellipsis overflow-hidden whitespace-nowrap px-2'
+          >
             {originalTitle}
-          </h1>
+          </motion.h1>
         </div>
-      </div>
+      </motion.div>
 
       <div
         className='hidden group-hover:flex items-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer'

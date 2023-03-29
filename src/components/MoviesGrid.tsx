@@ -17,7 +17,9 @@ export function MoviesGrid({ movies }: MoviesGridProps) {
   return (
     <div className='flex flex-col items-center md:flex-row lg:flex-col md:overflow-x-auto md:max-w-screen justify-items-center lg:max-h-2/3-screen lg:overflow-y-auto'>
       {!shouldShowEmptyCard &&
-        movies.map((movie) => <MovieCard key={movie.id} {...movie} />)}
+        movies.map((movie, index) => (
+          <MovieCard key={movie.id} movie={movie} index={index} />
+        ))}
       {shouldShowEmptyCard && <EmptyCard />}
     </div>
   );

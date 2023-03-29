@@ -2,7 +2,6 @@ import { LiteFlixMovie } from '@/interfaces/movies';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { EmptyCard } from './MovieCard/EmptyCard';
-import { MovieCard } from './MovieCard/MovieCard';
 import { MovieCardV2 } from './MovieCard/MovieCardV2';
 
 interface MoviesGridProps {

@@ -4,7 +4,6 @@ import { parseMovie } from '@/utils/moviesParser';
 import { getNowPlaying } from '@/services/movies';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-//TODO: Agregar los diferentes tipos de REST call [get, post, put]
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<LiteFlixMovie | ErrorResponse>

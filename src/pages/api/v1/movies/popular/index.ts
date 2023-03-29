@@ -9,7 +9,6 @@ export default async function handler(
   res: NextApiResponse<LiteFlixMovie[] | ErrorResponse>
 ) {
   try {
-    //TODO: agregar variables para controlar la cantidad de resultados
     const popularMovies = (await getPopularMovies()).slice(0, 4);
     res.status(200).json(parseMovies(popularMovies));
   } catch (error) {

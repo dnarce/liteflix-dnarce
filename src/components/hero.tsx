@@ -1,32 +1,22 @@
 import { LiteFlixMovie } from '../interfaces/movies';
 import { ButtonPrimary, ButtonSecondary } from './Buttons';
 import { PlayIcon, PlusIcon } from './icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useMotionEffectsContext } from '@/context/motion-effects-context';
 
 interface HeroProps {
   movie: LiteFlixMovie;
 }
 
-const heroImageEffect = {
-  initial: { scale: 1.2 },
-  animate: { scale: 1, transition: { duration: 20 } },
-};
-
-const heroLiteflixOriginalEffect = {
-  initial: { y: -50, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-};
-const heroOriginalTitleEffect = {
-  initial: { y: 50, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-};
-
-const buttonsEffects = {
-  initial: { x: -50, opacity: 0 },
-  animate: { x: 0, opacity: 1, transition: { duration: 0.5 } },
-};
-
 export function Hero({ movie }: HeroProps) {
+  const {
+    hero: {
+      heroImageEffect,
+      heroLiteflixOriginalEffect,
+      heroOriginalTitleEffect,
+      buttonsEffects,
+    },
+  } = useMotionEffectsContext();
   const { originalTitle, backdropPath, isLiteFlixOriginal = true } = movie;
   return (
     <section className='relative flex items-end md:items-center justify-center md:justify-start min-h-screen pb-4 md:pb-0 overflow-hidden'>

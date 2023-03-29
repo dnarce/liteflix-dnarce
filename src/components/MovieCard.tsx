@@ -1,20 +1,12 @@
 import { LiteFlixMovie } from '@/interfaces/movies';
 import { PlayCircleIcon, StarIcon } from './icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useMotionEffectsContext } from '@/context/motion-effects-context';
 
 interface MovieCardProps {
   movie: LiteFlixMovie;
   index: number;
 }
-
-const cardContainerEffect = {
-  initial: { y: 50, opacity: 0 },
-  animate: { y: 0, opacity: 1 },
-  transition: {
-    opacity: { duration: 1.2, delay: 0.5 },
-    y: { duration: 0.75, delay: 0.5 },
-  },
-};
 
 export function MovieCard({ movie, index }: MovieCardProps) {
   const {
@@ -27,8 +19,11 @@ export function MovieCard({ movie, index }: MovieCardProps) {
   const backgroundImage = localBackdropPath
     ? `url('${localBackdropPath}')`
     : `url('https://image.tmdb.org/t/p/w500${backdropPath}')`;
-
   const releaseYear = releaseDate?.split('-')[0];
+
+  const {
+    card: { cardContainerEffect },
+  } = useMotionEffectsContext();
 
   return (
     <div className='group inline-block mr-4 p-4'>

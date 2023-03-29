@@ -13,7 +13,6 @@ import {
   baseHiddenCardTitleClasses,
   baseHiddenCardExtraContentClasses,
 } from './movie-card.styles';
-import classNames from 'classnames';
 
 interface MovieCardProps {
   movie: LiteFlixMovie;

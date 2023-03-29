@@ -13,24 +13,28 @@ export function SuccessMovieSaved({
   const { toggleModal } = useModalContext();
 
   return (
-    <>
-      <div className='flex justify-center'>
+    <div className='flex flex-col h-full items-center'>
+      <div className='mt-8 w-full flex justify-center'>
         <LiteflixLogo />
       </div>
-      <h1 className='text-center text-white md:text-xl text-2xl font-bold tracking-[4px] leading-[26px] md:mt-[72px]'>
-        ¡Felicitaciones!
-      </h1>
-      <p className='text-xl tracking-[4px] leading-6 text-center md:mt-6'>{`${originaTitle} fue correctamente subida.`}</p>
-      <div className='flex justify-center md:mt-[92px]'>
-        <ButtonInverse
-          onClick={(e) => {
-            toggleModal(e);
-            setIsMovieSaved(false);
-          }}
-        >
-          Ir a Home
-        </ButtonInverse>
+      <div className='flex-grow flex flex-col items-center justify-center'>
+        <h1 className='text-center text-white md:text-xl text-2xl font-bold tracking-[4px] leading-[26px]'>
+          ¡Felicitaciones!
+        </h1>
+        <p className='text-xl tracking-[4px] leading-6 text-center mt-8 md:mt-6'>
+          {`${originaTitle} fue correctamente subida.`}
+        </p>
+        <div className='mt-[133px] md:mt-6'>
+          <ButtonInverse
+            onClick={(e) => {
+              toggleModal(e);
+              setIsMovieSaved(false);
+            }}
+          >
+            Ir a Home
+          </ButtonInverse>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,8 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎬 Liteflix Challenge
 
-## Getting Started
 
-First, run the development server:
+Este proyecto ha sido desarrollado con el propósito de evaluar mis habilidades como programador. El objetivo principal es replicar un catálogo de películas al estilo Netflix, siguiendo las especificaciones proporcionadas por el evaluador.
+
+Desarrollar este sitio web ha sido una experiencia emocionante y desafiante, de la cual he adquirido nuevos conocimientos y, sobre todo, una valiosa experiencia.
+
+<img src="public/images/liteflix-desktop-screenshot.png" alt="desktop-screenshot" width="100%">
+
+## Tecnologías utilizadas
+
+El proyecto se basa en una solución Next.js y TypeScript. Se ha utilizado **Tailwind CSS** para el estilizado de los componentes y **Framer Motion** para la implementación de efectos visuales.
+
+## Variables de Entorno
+
+Para ejecutar el proyecto localmente, es necesario configurar las siguientes variables de entorno:
+
+1. `NEXT_PUBLIC_TMDB_API_KEY` The Movies Data Base API key (https://developers.themoviedb.org/3/getting-started/introduction)
+2. `NEXT_PUBLIC_API_URL` URL api local, por ejemplo: `http://localhost:3000`.
+
+## Ejecución
+
+Para iniciar el servidor, ejecutar cualquiera de los siguientes comandos:
 
 ```bash
 npm run dev
@@ -12,16 +30,8 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Luego dirigirse en el navegador [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Sitio
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Environment variables
-
-1. `NEXT_PUBLIC_TMDB_API_KEY` The Movies Data Base API key (https://developers.themoviedb.org/3/getting-started/introduction)
+El sitio ha sido deployado en Vercel y se puede acceder mediante el siguiente enlace: 

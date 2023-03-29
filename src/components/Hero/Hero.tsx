@@ -12,7 +12,7 @@ import {
   heroLiteflixOriginalClasses,
   heroOriginalTitleClasses,
   heroBodyContainerClasses,
-} from './Hero.styles';
+} from './hero.styles';
 
 interface HeroProps {
   movie: LiteFlixMovie;

@@ -1,7 +1,19 @@
 import { LiteFlixMovie } from '@/interfaces/movies';
-import { PlayCircleIcon, StarIcon } from './icons';
+import { PlayCircleIcon, StarIcon } from '../icons';
 import { motion } from 'framer-motion';
 import { useMotionEffectsContext } from '@/context/motion-effects-context';
+import {
+  baseCardContainerClasses,
+  baseHiddenContainerClasses,
+  baseCardShadowClasses,
+  baseCardBodyClasses,
+  baseCardTitle,
+  baseHiddenCardBody,
+  baseHiddenCardContenClasses,
+  baseHiddenCardTitleClasses,
+  baseHiddenCardExtraContentClasses,
+} from './movie-card.styles';
+import classNames from 'classnames';
 
 interface MovieCardProps {
   movie: LiteFlixMovie;
@@ -34,14 +46,13 @@ export function MovieCard({ movie, index }: MovieCardProps) {
           opacity: { duration: 1.2, delay: index / 5 },
           y: { duration: 0.75, delay: index / 6 },
         }}
-        className='relative flex items-center justify-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer group-hover:hidden'
+        className={baseCardContainerClasses}
         style={{
           backgroundImage,
         }}
       >
-        <div className='absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/60 via-black/30 to-opacity-0'></div>
-
-        <div className='flex flex-col items-center justify-center inset-0'>
+        <div className={baseCardShadowClasses}></div>
+        <div className={baseCardBodyClasses}>
           <motion.span
             initial={cardContainerEffect.initial}
             animate={cardContainerEffect.animate}
@@ -60,7 +71,7 @@ export function MovieCard({ movie, index }: MovieCardProps) {
               opacity: { duration: 1, delay: index / 5 },
               y: { duration: 0.5, delay: index / 6 },
             }}
-            className='absolute bottom-3.5 text-center w-full text-ellipsis overflow-hidden whitespace-nowrap px-2'
+            className={baseCardTitle}
           >
             {originalTitle}
           </motion.h1>
@@ -68,22 +79,20 @@ export function MovieCard({ movie, index }: MovieCardProps) {
       </motion.div>
 
       <div
-        className='hidden group-hover:flex items-center w-[327px] h-[172px] md:w-[220px] md:h-[146px] bg-center bg-no-repeat bg-cover rounded cursor-pointer'
+        className={baseHiddenContainerClasses}
         style={{
           backgroundImage,
         }}
       >
-        <div className='p-4 bg-black/50 w-full h-full flex flex-col justify-end'>
-          <div className='flex flex-row items-center justify-items-center flex-grow'>
+        <div className={baseHiddenCardBody}>
+          <div className={baseHiddenCardContenClasses}>
             <span>
               <PlayCircleIcon />
             </span>
-            <span className='ml-2 w-full text-ellipsis overflow-hidden whitespace-nowrap'>
-              {originalTitle}
-            </span>
+            <span className={baseHiddenCardTitleClasses}>{originalTitle}</span>
           </div>
           {!localBackdropPath && (
-            <div className='flex flex-row items-center justify-items-center justify-between'>
+            <div className={baseHiddenCardExtraContentClasses}>
               <span className='flex items-center'>
                 <span className='mr-2'>
                   <StarIcon />

@@ -1,4 +1,5 @@
 import { ButtonProps } from '@/interfaces/button_props';
+import classNames from 'classnames';
 
 export default function ButtonBase({
   icon,
@@ -9,9 +10,16 @@ export default function ButtonBase({
 }: ButtonProps) {
   return (
     <button
-      className={`hover:brightness-150 active:brightness-125 uppercase tracking-[4px] leading-[22px] text-[18px] ${className} ${
-        disabled ? 'bg-opacity-50' : ''
-      }`}
+      className={classNames(
+        className,
+        'hover:brightness-150',
+        'active:brightness-125',
+        'uppercase',
+        'tracking-[4px]',
+        'leading-[22px]',
+        'text-[18px]',
+        { 'bg-opacity-50': disabled }
+      )}
       disabled={disabled}
       {...props}
     >

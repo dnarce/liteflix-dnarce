@@ -34,4 +34,4 @@ Luego dirigirse en el navegador [http://localhost:3000](http://localhost:3000)
 
 ## Sitio
 
-El sitio ha sido deployado en Vercel y se puede acceder mediante el siguiente enlace: 
+El sitio ha sido deployado en Vercel y se puede acceder mediante el siguiente enlace: [https://liteflix-dnarce.vercel.app/](https://liteflix-dnarce.vercel.app/)

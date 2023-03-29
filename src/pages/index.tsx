@@ -7,7 +7,7 @@ import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';
 import { Hero } from '@/components/Hero/Hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
-import { homeMainClassNames } from './index.styles';
+import classNames from 'classnames';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -33,6 +33,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   const { isModalOpen, toggleModal } = useModalContext();
+
+  const homeMainClassNames = classNames([
+    'relative',
+    'font-bebas-neue',
+    'tracking-widest',
+    'bg-dark-grey',
+    'text-white',
+  ]);
 
   return (
     <div className={homeMainClassNames}>

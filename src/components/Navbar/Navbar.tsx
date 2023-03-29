@@ -1,11 +1,16 @@
 import Image from 'next/image';
-import Avatar from '../../public/images/avatar2.jpeg';
-import { CloseIcon, MenuIcon, NotificationActiveIcon, PlusIcon } from './icons';
-import { LiteflixLogo } from './LiteflixLogo';
-import { Drawer } from './Drawer';
+import Avatar from '../../../public/images/avatar2.jpeg';
+import {
+  CloseIcon,
+  MenuIcon,
+  NotificationActiveIcon,
+  PlusIcon,
+} from '../icons';
+import { LiteflixLogo } from '../LiteflixLogo';
+import { Drawer } from '../Drawer';
 import { useToggleDrawer } from '@/hooks/useToggleDrawer';
 import { useModalContext } from '@/context/modal-context';
-import { ButtonLink } from './Buttons';
+import { ButtonLink } from '../Buttons';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 
@@ -66,6 +71,7 @@ export function Navbar() {
                   alt='avatar image'
                   width={42}
                   height={42}
+                  priority={true}
                 />
               </div>
             </div>

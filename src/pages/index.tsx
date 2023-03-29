@@ -1,7 +1,7 @@
-import { Navbar } from '@/components/Navbar';
 import { GetStaticProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
+import { Navbar } from '@/components/Navbar/Navbar';
 import { Modal } from '@/components/Modal/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';

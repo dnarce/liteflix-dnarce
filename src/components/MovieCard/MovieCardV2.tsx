@@ -53,6 +53,7 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         'cursor-pointer',
         'p-4',
         'group',
+        'relative',
         'mb-8'
       )}
       style={{
@@ -67,7 +68,8 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
           'justify-center',
           'w-full',
           'h-full',
-          'hover:flex-row'
+          'hover:flex-row',
+          'z-10'
         )}
       >
         <motion.span
@@ -93,10 +95,13 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
           }}
           className={classNames(
             'w-full',
+            'md:max-w-[220px]',
             'group-hover:block w-auto',
             'text-ellipsis',
             'overflow-hidden',
             'whitespace-nowrap',
+            'group-hover:whitespace-normal',
+            'group-hover:text-left',
             'text-center',
             'mt-2'
           )}
@@ -112,7 +117,8 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
           'items-center',
           'justify-items-center',
           'justify-between',
-          'w-full'
+          'w-full',
+          'z-10'
         )}
       >
         <span className='flex items-center'>
@@ -123,6 +129,19 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         </span>
         <span>{releaseYear}</span>
       </div>
+      <div
+        className={classNames(
+          'absolute',
+          'bottom-0',
+          'left-0',
+          'w-full',
+          'h-full',
+          'bg-dark-grey/70',
+          'hidden',
+          'group-hover:block',
+          'z-0'
+        )}
+      ></div>
     </motion.div>
   );
 }

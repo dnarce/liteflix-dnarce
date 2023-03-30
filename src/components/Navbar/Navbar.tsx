@@ -21,13 +21,13 @@ export function Navbar() {
         <div className='container mx-auto px-6'>
           <div className='flex items-center justify-between py-4'>
             <div className='lg:hidden'>
-              {!isDrawerOpen && (
-                <ButtonLink
-                  className='lg:flex lg:items-center'
-                  icon={<MenuIcon />}
-                  onClick={() => toggleDrawer()}
-                ></ButtonLink>
-              )}
+              <ButtonLink
+                className={classNames('lg:flex lg:items-center', {
+                  invisible: isDrawerOpen,
+                })}
+                icon={<MenuIcon />}
+                onClick={() => toggleDrawer()}
+              ></ButtonLink>
             </div>
 
             <div className='flex items-center'>

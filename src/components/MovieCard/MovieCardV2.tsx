@@ -41,7 +41,9 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         'h-auto',
         'aspect-video',
         'mx-4',
-        'md:mx-0',
+        'md:mx-4',
+        'lg:mx-4',
+        'lg:mb-8',
         'md:w-[220px]',
         'md:h-[146px]',
         'md:min-w-[220px]',
@@ -53,8 +55,7 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         'cursor-pointer',
         'p-4',
         'group',
-        'relative',
-        'mb-8'
+        'relative'
       )}
       style={{
         backgroundImage,

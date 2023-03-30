@@ -29,7 +29,7 @@ export function Navbar() {
   return (
     <>
       <nav className={navbarClasses}>
-        <div className='container mx-auto px-4'>
+        <div className='container mx-auto px-6'>
           <div className='flex items-center justify-between py-4'>
             <div className='lg:hidden'>
               <ButtonLink

@@ -9,6 +9,7 @@ import { Hero } from '@/components/Hero/Hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 import classNames from 'classnames';
 import { loadNowPlayingMovies, loadPopularMovies } from '@/utils/moviesApi';
+import { HeroV2 } from '@/components/Hero/HeroV2';
 
 interface HomeProps {
   nowPlaying: LiteFlixMovie;
@@ -41,7 +42,7 @@ export default function Home({ nowPlaying, popularMovies }: HomeProps) {
   return (
     <div className={homeMainClassNames}>
       <Navbar />
-      <Hero movie={nowPlaying as LiteFlixMovie} />
+      <HeroV2 movie={nowPlaying as LiteFlixMovie} />
       <MediaGallerySelector popularMovies={popularMovies} />
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
         <MovieUploader />

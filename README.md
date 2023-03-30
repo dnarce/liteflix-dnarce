@@ -5,7 +5,7 @@ Este proyecto fue creado con el objetivo de demostrar mis habilidades como, en r
 
 El desarrollo de este sitio web ha sido una experiencia emocionante y desafiante que me permitió adquirir nuevos conocimientos y, lo más importante, obtener una valiosa experiencia en el proceso.
 
-<img src="public/images/liteflix-desktop-screenshot.png" alt="desktop-screenshot" width="100%">
+<img src="public/images/desktop-screenshot.png" alt="desktop-screenshot" width="100%">
 
 ## Tecnologías utilizadas
 

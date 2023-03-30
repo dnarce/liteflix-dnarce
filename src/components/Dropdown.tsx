@@ -25,7 +25,7 @@ export function Dropdown({ items, onSelectItem = () => {} }: DropdownProps) {
         <span className='mr-2 py-0'>{selectedItem}</span> <ArrowDownIcon />
       </button>
       {isOpen && (
-        <div className='absolute z-10 p-6 w-full bg-dark-grey mt-2'>
+        <div className='absolute z-40 p-6 w-full bg-dark-grey mt-2'>
           <div className='w-[12px] h-[12px] bg-dark-grey rotate-45 absolute -top-1 right-4 invisible lg:visible'></div>
           <ul>
             {items.map((itemText, index) => {

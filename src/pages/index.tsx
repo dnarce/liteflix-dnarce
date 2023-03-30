@@ -5,7 +5,6 @@ import { Navbar } from '@/components/Navbar/Navbar';
 import { Modal } from '@/components/Modal/Modal';
 import { useModalContext } from '@/context/modal-context';
 import { MovieUploader } from '@/components/MovieUploader';
-import { Hero } from '@/components/Hero/Hero';
 import { MediaGallerySelector } from '@/components/MediaGallerySelector';
 import classNames from 'classnames';
 import { loadNowPlayingMovies, loadPopularMovies } from '@/utils/moviesApi';

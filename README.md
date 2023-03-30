@@ -1,9 +1,9 @@
 # 🎬 Liteflix Challenge
 
 
-Este proyecto ha sido desarrollado con el propósito de evaluar mis habilidades como programador. El objetivo principal es replicar un catálogo de películas al estilo Netflix, siguiendo las especificaciones proporcionadas por el evaluador.
+Este proyecto fue creado con el objetivo de demostrar mis habilidades como, en respuesta a un desafío planteado por una empresa durante el proceso de selección. El objetivo principal es replicar un catálogo de películas al estilo Netflix, siguiendo las especificaciones proporcionadas por el equipo evaluador.
 
-Desarrollar este sitio web ha sido una experiencia emocionante y desafiante, de la cual he adquirido nuevos conocimientos y, sobre todo, una valiosa experiencia.
+El desarrollo de este sitio web ha sido una experiencia emocionante y desafiante que me permitió adquirir nuevos conocimientos y, lo más importante, obtener una valiosa experiencia en el proceso.
 
 <img src="public/images/liteflix-desktop-screenshot.png" alt="desktop-screenshot" width="100%">
 

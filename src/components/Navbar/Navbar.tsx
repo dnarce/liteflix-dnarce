@@ -23,7 +23,7 @@ export function Navbar() {
             <div className='lg:hidden'>
               {!isDrawerOpen && (
                 <ButtonLink
-                  className='lg:flex lg:items-center mr-10'
+                  className='lg:flex lg:items-center'
                   icon={<MenuIcon />}
                   onClick={() => toggleDrawer()}
                 ></ButtonLink>

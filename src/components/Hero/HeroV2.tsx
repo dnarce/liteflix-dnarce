@@ -110,7 +110,7 @@ export function HeroV2({ movie }: HeroProps) {
               initial={heroOriginalTitleEffect.initial}
               animate={heroOriginalTitleEffect.animate}
               className={classNames(
-                'text-[76px]',
+                'text-8xl',
                 'md:text-[120px]',
                 'text-primary',
                 'font-bold',

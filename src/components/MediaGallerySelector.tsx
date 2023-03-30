@@ -40,7 +40,7 @@ export function MediaGallerySelector({
     setSelectedSource(option);
   };
   return (
-    <section className='lg:absolute mt-10 lg:top-32 lg:right-24 z-10'>
+    <section className='px-6 md:px-0 lg:absolute mt-10 lg:top-32 lg:right-24 z-10'>
       <div className='text-center mb-8'>
         <label>Ver:</label>{' '}
         <Dropdown

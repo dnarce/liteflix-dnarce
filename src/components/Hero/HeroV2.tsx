@@ -138,16 +138,21 @@ export function HeroV2({ movie }: HeroProps) {
               'items-center',
               'md:items-start',
               'w-full',
-              'lg:w-1/3'
+              'lg:max-w-[66%]'
             )}
           >
             <ButtonPrimary
-              className={classNames('md:mr-6 mb-6')}
+              className={classNames('md:mr-6 mb-6 w-[248px] h-[56px]')}
               icon={<PlayIcon />}
             >
               Reproducir
             </ButtonPrimary>
-            <ButtonSecondary icon={<PlusIcon />}>Mi Lista</ButtonSecondary>
+            <ButtonSecondary
+              className={'w-[248px] h-[56px]'}
+              icon={<PlusIcon />}
+            >
+              Mi Lista
+            </ButtonSecondary>
           </motion.div>
         </div>
       </motion.div>

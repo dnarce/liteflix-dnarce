@@ -3,6 +3,8 @@ import { LiteFlixMovie } from '@/interfaces/movies';
 import classNames from 'classnames';
 import { ButtonPrimary, ButtonSecondary } from '../Buttons';
 import { PlayIcon, PlusIcon } from '../icons';
+import { motion } from 'framer-motion';
+import { useMotionEffectsContext } from '@/context/motion-effects-context';
 
 interface HeroProps {
   movie: LiteFlixMovie;
@@ -10,22 +12,47 @@ interface HeroProps {
 export function HeroV2({ movie }: HeroProps) {
   const { originalTitle, backdropPath, isLiteFlixOriginal = true } = movie;
   const deviceImageWidth = useDeviceImageWidth();
-  const backgroundImage = `url('https://image.tmdb.org/t/p/${deviceImageWidth}${backdropPath}')`;
-  console.log(backgroundImage);
+  const backgroundImage = `https://image.tmdb.org/t/p/${deviceImageWidth}${backdropPath}`;
+  const {
+    hero: {
+      heroImageEffect,
+      heroLiteflixOriginalEffect,
+      heroOriginalTitleEffect,
+      buttonsEffects,
+    },
+  } = useMotionEffectsContext();
+
   return (
-    <section>
-      <div
+    <section className='relative overflow-hidden'>
+      <motion.img
         className={classNames(
+          'absolute',
+          'bottom-0',
+          'left-0',
+          'w-screen',
+          'h-screen',
           'bg-no-repeat',
           'bg-center',
-          'bg-cover',
-          'h-screen',
-          'w-screen'
+          'object-cover'
         )}
-        style={{
-          backgroundImage,
-        }}
-      >
+        src={backgroundImage}
+        initial={heroImageEffect.initial}
+        animate={heroImageEffect.animate}
+      ></motion.img>
+      <div
+        className={classNames(
+          'absolute',
+          'bottom-0',
+          'left-0',
+          'w-full',
+          'h-1/3',
+          'bg-gradient-to-t',
+          'from-dark-grey',
+          'to-transparent',
+          'lg:invisible'
+        )}
+      ></div>
+      <motion.div className={classNames('relative', 'h-screen')}>
         <div
           className={classNames(
             'container',
@@ -50,7 +77,9 @@ export function HeroV2({ movie }: HeroProps) {
                 'lg:max-w-[66%]'
               )}
             >
-              <h1
+              <motion.h2
+                initial={heroLiteflixOriginalEffect.initial}
+                animate={heroLiteflixOriginalEffect.animate}
                 className={classNames(
                   'text-[20px]',
                   'font-normal',
@@ -64,7 +93,7 @@ export function HeroV2({ movie }: HeroProps) {
                 )}
               >
                 Original de Liteflix
-              </h1>
+              </motion.h2>
             </div>
           )}
           <div
@@ -77,7 +106,9 @@ export function HeroV2({ movie }: HeroProps) {
               'lg:max-w-[66%]'
             )}
           >
-            <h1
+            <motion.h1
+              initial={heroOriginalTitleEffect.initial}
+              animate={heroOriginalTitleEffect.animate}
               className={classNames(
                 'text-[76px]',
                 'md:text-[120px]',
@@ -95,9 +126,11 @@ export function HeroV2({ movie }: HeroProps) {
               )}
             >
               {originalTitle}
-            </h1>
+            </motion.h1>
           </div>
-          <div
+          <motion.div
+            initial={buttonsEffects.initial}
+            animate={buttonsEffects.animate}
             className={classNames(
               'flex',
               'flex-col',
@@ -115,9 +148,9 @@ export function HeroV2({ movie }: HeroProps) {
               Reproducir
             </ButtonPrimary>
             <ButtonSecondary icon={<PlusIcon />}>Mi Lista</ButtonSecondary>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

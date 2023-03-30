@@ -93,6 +93,7 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
           }}
           className={classNames(
             'w-full',
+            'group-hover:block w-auto',
             'text-ellipsis',
             'overflow-hidden',
             'whitespace-nowrap',

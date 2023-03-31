@@ -45,6 +45,7 @@ export function MovieCardV2({ movie, index }: MovieCardProps) {
         'lg:mx-4',
         'mb-8',
         'md:mb-0',
+        'lg:mb-8',
         'md:w-[220px]',
         'md:h-[146px]',
         'md:min-w-[220px]',

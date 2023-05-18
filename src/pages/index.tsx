@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { LiteFlixMovie } from '@/interfaces/movies';
 
 import { Navbar } from '@/components/Navbar/Navbar';
@@ -15,7 +15,7 @@ interface HomeProps {
   popularMovies: LiteFlixMovie[];
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const nowPlayingResultData = await loadNowPlayingMovies();
   const popularMoviesResultData = await loadPopularMovies();
 
